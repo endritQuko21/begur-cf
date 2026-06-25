@@ -1,0 +1,25 @@
+.plantilla__hero { background: var(--color-blue-dark); }
+.plantilla__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+.plantilla__staff {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.staff-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 24px 32px;
+  box-shadow: var(--shadow-card);
+  min-width: 160px;
+}
+.staff-card__avatar { font-size: 3rem; }
+.staff-card__nombre { font-weight: 700; font-size: 0.95rem; text-align: center; }
+.staff-card__rol { font-size: 0.8rem; color: var(--color-red); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }

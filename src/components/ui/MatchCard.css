@@ -1,0 +1,53 @@
+.match-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 4px solid var(--color-gray-mid);
+  transition: box-shadow 0.2s;
+}
+.match-card--next { border-left-color: var(--color-red); }
+.match-card:hover { box-shadow: var(--shadow-hover); }
+.match-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--color-gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.match-card__lugar { font-weight: 700; }
+.match-card__lugar.local { color: var(--color-blue); }
+.match-card__lugar.fuera { color: var(--color-red); }
+.match-card__teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.match-card__team {
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+}
+.match-card__team:last-child { text-align: right; }
+.match-card__result {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-black);
+  letter-spacing: 0.1em;
+  min-width: 60px;
+  text-align: center;
+}
+.match-card__vs {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-red);
+  letter-spacing: 0.1em;
+  min-width: 60px;
+  text-align: center;
+}

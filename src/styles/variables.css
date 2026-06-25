@@ -1,0 +1,24 @@
+:root {
+  --color-red: #C8102E;
+  --color-red-dark: #8B0A1E;
+  --color-blue: #003087;
+  --color-blue-dark: #001a4d;
+  --color-white: #FFFFFF;
+  --color-black: #0A0A0A;
+  --color-gray-light: #F5F5F5;
+  --color-gray-mid: #E0E0E0;
+  --color-gray-text: #666666;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.10);
+  --shadow-hover: 0 6px 24px rgba(0,0,0,0.18);
+
+  --max-width: 1200px;
+  --navbar-height: 70px;
+}

@@ -1,0 +1,23 @@
+.campo__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.campo__info h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+.campo__details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.campo__details li { font-size: 0.95rem; border-bottom: 1px solid var(--color-gray-mid); padding-bottom: 12px; }
+.campo__map iframe { border-radius: var(--radius-md); }
+@media (max-width: 768px) {
+  .campo__inner { grid-template-columns: 1fr; }
+}

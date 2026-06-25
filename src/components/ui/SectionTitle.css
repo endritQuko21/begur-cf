@@ -1,0 +1,26 @@
+.section-title {
+  margin-bottom: 48px;
+}
+.section-title__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.04em;
+  color: var(--color-black);
+  line-height: 1;
+}
+.section-title--light .section-title__heading { color: var(--color-white); }
+.section-title__sub {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--color-gray-text);
+  font-weight: 400;
+}
+.section-title--light .section-title__sub { color: rgba(255,255,255,0.7); }
+.section-title__bar {
+  width: 48px;
+  height: 4px;
+  background: var(--color-red);
+  margin-top: 14px;
+  border-radius: 2px;
+}
+.section-title--light .section-title__bar { background: var(--color-white); }

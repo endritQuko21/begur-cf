@@ -4,10 +4,11 @@ import { noticias } from '../data/noticias';
 import MatchCard from '../components/ui/MatchCard';
 import NewsCard from '../components/ui/NewsCard';
 import SectionTitle from '../components/ui/SectionTitle';
+import Countdown from '../components/ui/Countdown';
+import LeagueTable from '../components/ui/LeagueTable';
 import './Home.css';
 
 function HeroCard() {
-  // Lógica de prioridad: partido hoy > próximo partido > noticia destacada
   const hoy = new Date().toISOString().split('T')[0];
   const partidoHoy = partidos.find(p => p.fecha === hoy);
   const proximoPartido = partidos.find(p => p.tipo === 'proximo');
@@ -62,18 +63,18 @@ function HeroCard() {
 
 export default function Home() {
   const proximos = partidos.filter(p => p.tipo === 'proximo').slice(0, 2);
+  const proximoConFecha = partidos.find(p => p.tipo === 'proximo');
   const ultimasNoticias = noticias.slice(0, 3);
 
   return (
     <div className="home">
+
       {/* HERO */}
       <section className="hero">
         <div className="hero__overlay" />
         <div className="container hero__content">
-          
-          {/* IZQUIERDA */}
           <div className="hero__left">
-            <span className="hero__eyebrow">Temporada 2024 – 25</span>
+            <span className="hero__eyebrow">Temporada 2026 – 27</span>
             <h1 className="hero__title">BEGUR<br />C.F. A</h1>
             <p className="hero__sub">Club de Futbol · Baix Empordà · Girona</p>
             <div className="hero__actions">
@@ -81,20 +82,31 @@ export default function Home() {
               <Link to="/partidos" className="btn btn--outline">Próximos partidos</Link>
             </div>
           </div>
-
-          {/* DERECHA — Card dinámica */}
           <div className="hero__right">
             <HeroCard />
           </div>
-
         </div>
         <div className="hero__diagonal" />
+      </section>
+
+      {/* COUNTDOWN */}
+      {proximoConFecha && <Countdown partido={proximoConFecha} />}
+
+      {/* CLASIFICACIÓN */}
+      <section className="section section--gray">
+        <div className="container">
+          <SectionTitle title="Clasificación" subtitle="Regional Preferent Girona" />
+          <LeagueTable maxRows={5} />
+          <Link to="/liga" className="btn btn--primary home__link" style={{ marginTop: '20px' }}>
+            Ver clasificación completa →
+          </Link>
+        </div>
       </section>
 
       {/* PRÓXIMOS PARTIDOS */}
       <section className="section">
         <div className="container">
-          <SectionTitle title="Próximos Partidos" subtitle="Temporada regular 2024-25" />
+          <SectionTitle title="Próximos Partidos" subtitle="Temporada regular 2026-27" />
           <div className="home__matches">
             {proximos.map(p => <MatchCard key={p.id} partido={p} />)}
           </div>
@@ -105,10 +117,10 @@ export default function Home() {
       {/* STATS BAND */}
       <section className="section section--red stats-band">
         <div className="container stats-band__grid">
-          <div className="stat"><span className="stat__num">6</span><span className="stat__label">Jugadores</span></div>
-          <div className="stat"><span className="stat__num">14</span><span className="stat__label">Partidos</span></div>
-          <div className="stat"><span className="stat__num">3</span><span className="stat__label">Victorias</span></div>
-          <div className="stat"><span className="stat__num">2024</span><span className="stat__label">Temporada</span></div>
+          <div className="stat"><span className="stat__num">23</span><span className="stat__label">Jugadores</span></div>
+          <div className="stat"><span className="stat__num">0</span><span className="stat__label">Partidos jugados</span></div>
+          <div className="stat"><span className="stat__num">0</span><span className="stat__label">Victorias</span></div>
+          <div className="stat"><span className="stat__num">26/27</span><span className="stat__label">Temporada</span></div>
         </div>
       </section>
 

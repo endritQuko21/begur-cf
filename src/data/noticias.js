@@ -11,7 +11,7 @@ export const noticias = [
   {
     id: 2,
     titulo: "Nueva equipación para la segunda vuelta",
-    resumen: "El club presenta la nueva segunda equipación para el tramo final de la temporada 2024-25.",
+    resumen: "El club presenta la nueva segunda equipación para el tramo final de la temporada 2025-26.",
     fecha: "2025-01-10",
     imagen: null,
     categoria: "Club"

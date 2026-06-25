@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__brand">
           <span className="footer__name">BEGUR C.F. A</span>
-          <span className="footer__sub">Temporada 2024 – 2025</span>
+          <span className="footer__sub">Temporada 2026 – 2027</span>
         </div>
         <p className="footer__copy">© {new Date().getFullYear()} Begur Club de Futbol. Tots els drets reservats.</p>
       </div>

@@ -10,7 +10,7 @@ export default function Partidos() {
     <div>
       <div className="section section--dark">
         <div className="container">
-          <SectionTitle title="Partidos" subtitle="Temporada 2024-25" light />
+          <SectionTitle title="Partidos" subtitle="Temporada 2026-27" light />
         </div>
       </div>
       <section className="section">

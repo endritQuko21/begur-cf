@@ -9,6 +9,50 @@ const posicionColor = {
   Delantero: '#b07800',
 };
 
+function StatBar({ value, max, color }) {
+  return (
+    <div style={{ background: '#f0f0f0', borderRadius: '2px', height: '4px', width: '100%' }}>
+      <div style={{
+        width: `${Math.min((value / max) * 100, 100)}%`,
+        height: '100%',
+        background: color,
+        borderRadius: '2px',
+        transition: 'width 0.6s ease'
+      }} />
+    </div>
+  );
+}
+
+function PlayerStats({ stats, posicion }) {
+  const color = { Portero: '#C8102E', Defensa: '#003087', Centrocampista: '#1a5c1a', Delantero: '#b07800' }[posicion] || '#333';
+  const esPortero = posicion === 'Portero';
+
+  const items = esPortero ? [
+    { label: 'Partidos', value: stats.partidos, max: 30, show: true },
+    { label: 'Porterías a cero', value: stats.porteriaCero, max: 20, show: true },
+    { label: 'Tarjetas amarillas', value: stats.tarjetasA, max: 10, show: true },
+  ] : [
+    { label: 'Partidos', value: stats.partidos, max: 30, show: true },
+    { label: 'Goles', value: stats.goles, max: 15, show: true },
+    { label: 'Asistencias', value: stats.asistencias, max: 15, show: true },
+    { label: 'Tarjetas amarillas', value: stats.tarjetasA, max: 10, show: true },
+  ];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '4px' }}>
+      {items.map(({ label, value, max }) => (
+        <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
+            <span style={{ color: '#666', fontWeight: 500 }}>{label}</span>
+            <span style={{ fontWeight: 700, color: '#0a0a0a' }}>{value}</span>
+          </div>
+          <StatBar value={value} max={max} color={color} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function PlayerModal({ jugador, onClose }) {
   // Cerrar con Escape
   useEffect(() => {
@@ -68,6 +112,8 @@ export default function PlayerModal({ jugador, onClose }) {
             {jugador.descripcion && (
               <p className="modal__desc">{jugador.descripcion}</p>
             )}
+
+            {jugador.stats && <PlayerStats stats={jugador.stats} posicion={jugador.posicion} />}
 
             <div className="modal__badges">
               {jugador.posiciones?.map(p => (

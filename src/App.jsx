@@ -5,6 +5,7 @@ import Plantilla from './pages/Plantilla';
 import Partidos from './pages/Partidos';
 import Noticias from './pages/Noticias';
 import Campo from './pages/Campo';
+import Liga from './pages/Liga';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/plantilla" element={<Plantilla />} />
           <Route path="/partidos" element={<Partidos />} />
+          <Route path="/liga" element={<Liga />} />
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/campo" element={<Campo />} />
         </Routes>

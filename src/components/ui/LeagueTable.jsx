@@ -29,8 +29,13 @@ export default function LeagueTable({ maxRows }) {
                 </span>
               </td>
               <td className="league-table__nombre">
-                {row.esNosotros && <span className="league-table__escudo">⚽</span>}
-                {row.equipo}
+                {row.esNosotros
+                  ? <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span className="league-table__escudo">⚽</span>
+                      {row.equipo}
+                    </span>
+                  : row.equipo
+                }
               </td>
               <td>{row.pj}</td>
               <td>{row.g}</td>

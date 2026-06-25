@@ -37,7 +37,7 @@ export function useJugadores() {
 }
 
 // ─── STAFF ───────────────────────────────────────────
-export function useJugadores() {
+export function useStaff() {
   const [staff, setStaff] = useState([]);
   const [loading, setLoading] = useState(true);
 

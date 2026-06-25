@@ -36,6 +36,32 @@ export function useJugadores() {
   return { jugadores, loading, add, update, remove };
 }
 
+// ─── STAFF ───────────────────────────────────────────
+export function useJugadores() {
+  const [staff, setStaff] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, 'staff'));
+    const unsub = onSnapshot(q, snap => {
+      if (snap.empty) {
+        // Primera vez: seed con datos por defecto
+        defaultStaff.forEach(j => addDoc(collection(db, 'staff'), j));
+      } else {
+        setStaff(snap.docs.map(d => ({ ...d.data(), _id: d.id })));
+      }
+      setLoading(false);
+    });
+    return unsub;
+  }, []);
+
+  const add = (j) => addDoc(collection(db, 'staff'), j);
+  const update = (id, j) => updateDoc(doc(db, 'staff', id), j);
+  const remove = (id) => deleteDoc(doc(db, 'staff', id));
+
+  return { staff, loading, add, update, remove };
+}
+
 // ─── PARTIDOS ────────────────────────────────────────────
 export function usePartidos() {
   const [partidos, setPartidos] = useState([]);

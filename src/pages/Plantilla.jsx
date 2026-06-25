@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { jugadores, staff } from '../data/jugadores';
+import { useJugadores, useStaff } from '../hooks/useData';
 import PlayerCard from '../components/ui/PlayerCard';
 import PlayerModal from '../components/ui/PlayerModal';
 import SectionTitle from '../components/ui/SectionTitle';
@@ -7,6 +7,8 @@ import './Plantilla.css';
 
 export default function Plantilla() {
   const [selected, setSelected] = useState(null);
+  const { jugadores } = useJugadores();
+  const { staff } = useStaff();
 
   return (
     <div className="plantilla">

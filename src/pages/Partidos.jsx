@@ -1,9 +1,10 @@
-import { partidos } from '../data/partidos';
+import { usePartidos } from '../hooks/useData';
 import MatchCard from '../components/ui/MatchCard';
 import SectionTitle from '../components/ui/SectionTitle';
 import './Partidos.css';
 
 export default function Partidos() {
+  const { partidos } = usePartidos();
   const jugados = partidos.filter(p => p.tipo === 'jugado');
   const proximos = partidos.filter(p => p.tipo === 'proximo');
   return (

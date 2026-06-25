@@ -6,20 +6,29 @@ import Partidos from './pages/Partidos';
 import Noticias from './pages/Noticias';
 import Campo from './pages/Campo';
 import Liga from './pages/Liga';
+import AdminApp from './admin/AdminApp';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/plantilla" element={<Plantilla />} />
-          <Route path="/partidos" element={<Partidos />} />
-          <Route path="/liga" element={<Liga />} />
-          <Route path="/noticias" element={<Noticias />} />
-          <Route path="/campo" element={<Campo />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/* Admin — sin Layout público */}
+        <Route path="/admin/*" element={<AdminApp />} />
+
+        {/* Web pública */}
+        <Route path="/*" element={
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/plantilla" element={<Plantilla />} />
+              <Route path="/partidos" element={<Partidos />} />
+              <Route path="/noticias" element={<Noticias />} />
+              <Route path="/campo" element={<Campo />} />
+              <Route path="/liga" element={<Liga />} />
+            </Routes>
+          </Layout>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 }

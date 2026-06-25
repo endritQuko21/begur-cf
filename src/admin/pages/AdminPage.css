@@ -1,0 +1,10 @@
+.admin-page { display: flex; flex-direction: column; gap: 24px; }
+.admin-page__header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.admin-page__title {
+  font-family: var(--font-display); font-size: 2rem;
+  letter-spacing: 0.04em; line-height: 1; color: var(--color-black);
+}
+.admin-page__sub { font-size: 0.82rem; color: var(--color-gray-text); margin-top: 4px; }

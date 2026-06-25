@@ -1,0 +1,18 @@
+.admin-home__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.admin-stat-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.admin-stat-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.admin-stat-card__val { font-family: var(--font-display); font-size: 3rem; line-height: 1; }
+.admin-stat-card__label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-gray-text); }

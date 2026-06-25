@@ -1,0 +1,7 @@
+.admin-clas-table-wrap { overflow-x: auto; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.admin-clas-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.admin-clas-table th { background: var(--color-blue-dark); color: rgba(255,255,255,0.7); padding: 10px 14px; text-align: left; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+.admin-clas-table td { padding: 10px 14px; border-bottom: 1px solid var(--color-gray-mid); }
+.admin-clas-table tbody tr:last-child td { border-bottom: none; }
+.admin-clas-table tbody tr:hover { background: #fafafa; }
+.admin-clas-table__us { background: rgba(200,16,46,0.05) !important; font-weight: 600; }

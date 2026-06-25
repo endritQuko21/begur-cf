@@ -41,10 +41,18 @@ export const jugadores = [
     descripcion: "Delantero rápido y directo. Olfato goleador y desequilibrio en banda.",
     stats: { partidos: 11, goles: 9, asistencias: 3, tarjetasA: 2, tarjetasR: 0, porteriaCero: 0 }
   },
+  {
+    id: 7, nombre: "Endrit Qukovci", dorsal: 21, posicion: "Delantero",
+    posiciones: ["LB", "LM", "LW"],
+    edad: 26, nacionalidad: "España", foto: null,
+    descripcion: "Delantero rápido y directo. Olfato goleador y desequilibrio en banda.",
+    stats: { partidos: 11, goles: 9, asistencias: 3, tarjetasA: 2, tarjetasR: 0, porteriaCero: 0 }
+  },
 ];
 
 export const staff = [
   { id: 1, nombre: "Josep Roca", rol: "Entrenador", foto: null },
-  { id: 2, nombre: "Miquel Pla", rol: "Preparador Físico", foto: null },
-  { id: 3, nombre: "Anna Sala", rol: "Delegada", foto: null },
+  { id: 2, nombre: "Gerard Saval", rol: "Analista", foto: null },
+  { id: 3, nombre: "Miquel Pla", rol: "Preparador Físico", foto: null },
+  { id: 4, nombre: "Anna Sala", rol: "Delegada", foto: null },
 ];

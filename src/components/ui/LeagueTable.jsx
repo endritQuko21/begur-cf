@@ -1,7 +1,8 @@
-import { clasificacion } from '../../data/clasificacion';
+import { useClasificacion } from '../../hooks/useData';
 import './LeagueTable.css';
 
 export default function LeagueTable({ maxRows }) {
+  const { clasificacion } = useClasificacion();
   const rows = maxRows ? clasificacion.slice(0, maxRows) : clasificacion;
 
   return (

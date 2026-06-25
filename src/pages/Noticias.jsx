@@ -1,9 +1,11 @@
-import { noticias } from '../data/noticias';
+import { useNoticias } from '../hooks/useData';
 import NewsCard from '../components/ui/NewsCard';
 import SectionTitle from '../components/ui/SectionTitle';
 import './Noticias.css';
 
 export default function Noticias() {
+  const { noticias } = useNoticias();
+
   return (
     <div>
       <div className="section section--dark">

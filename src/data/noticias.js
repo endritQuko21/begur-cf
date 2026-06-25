@@ -5,7 +5,8 @@ export const noticias = [
     resumen: "El equipo consiguió una importante victoria en el campo de La Guarda ante más de 200 espectadores.",
     fecha: "2025-01-18",
     imagen: null,
-    categoria: "Partido"
+    categoria: "Partido",
+    destacada: true,
   },
   {
     id: 2,

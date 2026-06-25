@@ -6,6 +6,60 @@ import NewsCard from '../components/ui/NewsCard';
 import SectionTitle from '../components/ui/SectionTitle';
 import './Home.css';
 
+function HeroCard() {
+  // Lógica de prioridad: partido hoy > próximo partido > noticia destacada
+  const hoy = new Date().toISOString().split('T')[0];
+  const partidoHoy = partidos.find(p => p.fecha === hoy);
+  const proximoPartido = partidos.find(p => p.tipo === 'proximo');
+  const noticiaDestacada = noticias.find(n => n.destacada) || noticias[0];
+
+  if (partidoHoy) {
+    return (
+      <div className="hero-card hero-card--live">
+        <span className="hero-card__badge hero-card__badge--live">🔴 EN DIRECTO</span>
+        <div className="hero-card__match">
+          <span className="hero-card__team">Begur C.F. A</span>
+          <span className="hero-card__score">{partidoHoy.resultado || '0 – 0'}</span>
+          <span className="hero-card__team">{partidoHoy.rival}</span>
+        </div>
+        <Link to="/partidos" className="hero-card__link">Ver partido →</Link>
+      </div>
+    );
+  }
+
+  if (proximoPartido) {
+    const fecha = new Date(proximoPartido.fecha).toLocaleDateString('es-ES', {
+      weekday: 'long', day: 'numeric', month: 'long'
+    });
+    return (
+      <div className="hero-card hero-card--next">
+        <span className="hero-card__badge">Próximo partido</span>
+        <div className="hero-card__match">
+          <span className="hero-card__team">Begur C.F. A</span>
+          <span className="hero-card__vs">VS</span>
+          <span className="hero-card__team">{proximoPartido.rival}</span>
+        </div>
+        <div className="hero-card__meta">
+          <span>📅 {fecha}</span>
+          <span>🕐 {proximoPartido.hora}</span>
+          <span>{proximoPartido.lugar === 'Casa' ? '🏠 Local' : '✈️ Fuera'}</span>
+        </div>
+        <Link to="/partidos" className="hero-card__link">Ver todos los partidos →</Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="hero-card hero-card--news">
+      <span className="hero-card__badge">Destacado</span>
+      <div className="hero-card__news-img" />
+      <h3 className="hero-card__news-title">{noticiaDestacada.titulo}</h3>
+      <p className="hero-card__news-text">{noticiaDestacada.resumen}</p>
+      <Link to="/noticias" className="hero-card__link">Leer más →</Link>
+    </div>
+  );
+}
+
 export default function Home() {
   const proximos = partidos.filter(p => p.tipo === 'proximo').slice(0, 2);
   const ultimasNoticias = noticias.slice(0, 3);
@@ -16,13 +70,23 @@ export default function Home() {
       <section className="hero">
         <div className="hero__overlay" />
         <div className="container hero__content">
-          <span className="hero__eyebrow">Temporada 2024 – 25</span>
-          <h1 className="hero__title">BEGUR<br />C.F. A</h1>
-          <p className="hero__sub">Club de Futbol · Baix Empordà · Girona</p>
-          <div className="hero__actions">
-            <Link to="/plantilla" className="btn btn--primary">Ver Plantilla</Link>
-            <Link to="/partidos" className="btn btn--outline">Próximos partidos</Link>
+          
+          {/* IZQUIERDA */}
+          <div className="hero__left">
+            <span className="hero__eyebrow">Temporada 2024 – 25</span>
+            <h1 className="hero__title">BEGUR<br />C.F. A</h1>
+            <p className="hero__sub">Club de Futbol · Baix Empordà · Girona</p>
+            <div className="hero__actions">
+              <Link to="/plantilla" className="btn btn--primary">Ver Plantilla</Link>
+              <Link to="/partidos" className="btn btn--outline">Próximos partidos</Link>
+            </div>
           </div>
+
+          {/* DERECHA — Card dinámica */}
+          <div className="hero__right">
+            <HeroCard />
+          </div>
+
         </div>
         <div className="hero__diagonal" />
       </section>

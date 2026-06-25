@@ -12,11 +12,11 @@ export default function AdminTable({ cols, rows, onEdit, onDelete }) {
             <tr><td colSpan={cols.length + 1} className="admin-table__empty">Sin datos</td></tr>
           )}
           {rows.map(row => (
-            <tr key={row.id}>
+            <tr key={row._id}>
               {cols.map(c => <td key={c.key}>{c.render ? c.render(row) : row[c.key]}</td>)}
               <td className="admin-table__actions">
                 <button className="admin-btn admin-btn--edit" onClick={() => onEdit(row)}>Editar</button>
-                <button className="admin-btn admin-btn--delete" onClick={() => onDelete(row.id)}>Eliminar</button>
+                <button className="admin-btn admin-btn--delete" onClick={() => onDelete(row._id)}>Eliminar</button>
               </td>
             </tr>
           ))}

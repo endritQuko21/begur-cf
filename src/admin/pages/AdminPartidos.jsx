@@ -36,7 +36,7 @@ export default function AdminPartidos() {
   const [editing, setEditing] = useState(null);
 
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
-  const openEdit = (p) => { setEditing(p.id); setForm({ ...p }); };
+  const openEdit = (p) => { setEditing(p._id); setForm({ ...p }); };
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
   const handleSubmit = () => {
     editing ? update(editing, form) : add(form);

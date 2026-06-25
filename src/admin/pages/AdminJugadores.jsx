@@ -35,7 +35,7 @@ export default function AdminJugadores() {
 
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
   const openEdit = (j) => {
-    setEditing(j.id);
+    setEditing(j._id);
     setForm({ ...j, posicionesStr: (j.posiciones || []).join(', ') });
   };
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));

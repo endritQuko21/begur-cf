@@ -22,9 +22,14 @@ export default function AdminClasificacion() {
 
   const openEdit = (row) => { setEditing(row.pos); setForm({ ...row }); };
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
-  const handleSubmit = () => {
+  /*const handleSubmit = () => {
     const data = { ...form, pj: +form.pj, g: +form.g, e: +form.e, p: +form.p, gf: +form.gf, gc: +form.gc, pts: +form.pts };
     update(editing, data);
+    setForm(null);
+  };*/
+
+  const handleSubmit = () => {
+    update(String(editing), { ...form });
     setForm(null);
   };
 

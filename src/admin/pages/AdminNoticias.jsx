@@ -32,7 +32,7 @@ export default function AdminNoticias() {
   const [editing, setEditing] = useState(null);
 
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
-  const openEdit = (n) => { setEditing(n.id); setForm({ ...n }); };
+  const openEdit = (n) => { setEditing(n._id); setForm({ ...n }); };
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
   const handleSubmit = () => {
     editing ? update(editing, form) : add(form);

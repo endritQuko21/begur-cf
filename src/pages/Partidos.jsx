@@ -19,7 +19,7 @@ export default function Partidos() {
       <section className="section">
         <div className="container partidos__cols">
           <div>
-            <SectionTitle title="Próximos" />
+            <SectionTitle title="Partidos" />
             <div className="partidos__list">
               {proximos.map(p => <MatchCard key={p._id} partido={p} />)}
             </div>
@@ -30,7 +30,7 @@ export default function Partidos() {
               {jugados.map(p => (
                 <div key={p._id}>
                   <MatchCard partido={p} />
-                  <Gallery partidoId={p._id} />
+                  <Gallery partidoId={p._id} rival={p.rival} />
                 </div>
               ))}
             </div>

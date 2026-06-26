@@ -79,7 +79,7 @@ export default function Home() {
             <p className="hero__sub">Club de Futbol · Baix Empordà · Girona</p>
             <div className="hero__actions">
               <Link to="/plantilla" className="btn btn--primary">Ver Plantilla</Link>
-              <Link to="/partidos" className="btn btn--outline">Próximos partidos</Link>
+              <Link to="/partidos" className="btn btn--outline">Partidos</Link>
             </div>
           </div>
           <div className="hero__right">
@@ -103,10 +103,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRÓXIMOS PARTIDOS */}
+      {/* PARTIDOS */}
       <section className="section">
         <div className="container">
-          <SectionTitle title="Próximos Partidos" subtitle="Temporada regular 2026-27" />
+          <SectionTitle title="Partidos" subtitle="Temporada regular 2026-27" />
           <div className="home__matches">
             {proximos.map(p => <MatchCard key={p.id} partido={p} />)}
           </div>

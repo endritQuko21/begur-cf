@@ -1,12 +1,14 @@
 import { usePartidos } from '../hooks/useData';
 import MatchCard from '../components/ui/MatchCard';
 import SectionTitle from '../components/ui/SectionTitle';
+import Gallery from '../components/ui/Gallery';
 import './Partidos.css';
 
 export default function Partidos() {
   const { partidos } = usePartidos();
   const jugados = partidos.filter(p => p.tipo === 'jugado');
   const proximos = partidos.filter(p => p.tipo === 'proximo');
+
   return (
     <div>
       <div className="section section--dark">
@@ -19,13 +21,18 @@ export default function Partidos() {
           <div>
             <SectionTitle title="Próximos" />
             <div className="partidos__list">
-              {proximos.map(p => <MatchCard key={p.id} partido={p} />)}
+              {proximos.map(p => <MatchCard key={p._id} partido={p} />)}
             </div>
           </div>
           <div>
             <SectionTitle title="Resultados" />
             <div className="partidos__list">
-              {jugados.map(p => <MatchCard key={p.id} partido={p} />)}
+              {jugados.map(p => (
+                <div key={p._id}>
+                  <MatchCard partido={p} />
+                  <Gallery partidoId={p._id} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,0 +1,61 @@
+.admin-fotos-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  z-index: 300; display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.admin-fotos {
+  background: white; border-radius: var(--radius-lg);
+  width: 100%; max-width: 800px; max-height: 90vh;
+  overflow-y: auto; padding: 32px;
+  display: flex; flex-direction: column; gap: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.admin-fotos__header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.admin-fotos__close {
+  background: var(--color-gray-light); border: none;
+  width: 32px; height: 32px; border-radius: 50%;
+  cursor: pointer; font-size: 0.85rem; display: flex;
+  align-items: center; justify-content: center;
+}
+.admin-fotos__dropzone {
+  border: 2px dashed var(--color-gray-mid);
+  border-radius: var(--radius-md);
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--color-gray-text); font-size: 0.9rem;
+  transition: border-color 0.15s, background 0.15s;
+}
+.admin-fotos__dropzone:hover { border-color: var(--color-blue); background: #f0f4ff; }
+.admin-fotos__dropicon { font-size: 2rem; }
+.admin-fotos__hint { font-size: 0.75rem; }
+.admin-fotos__progress {
+  width: 100%; display: flex; flex-direction: column; gap: 8px; align-items: center;
+}
+.admin-fotos__progress-bar {
+  height: 6px; background: var(--color-blue);
+  border-radius: 3px; transition: width 0.2s;
+  width: 0%; align-self: flex-start;
+}
+.admin-fotos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.admin-fotos__item {
+  position: relative; border-radius: var(--radius-sm); overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.admin-fotos__item img { width: 100%; height: 100%; object-fit: cover; }
+.admin-fotos__delete {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(0,0,0,0.6); color: white;
+  border: none; width: 24px; height: 24px;
+  border-radius: 50%; cursor: pointer; font-size: 0.7rem;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.15s;
+}
+.admin-fotos__item:hover .admin-fotos__delete { opacity: 1; }

@@ -1,0 +1,61 @@
+.gallery { margin-top: 12px; }
+.gallery__label {
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-gray-text); margin-bottom: 10px;
+}
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.gallery__thumb {
+  position: relative; aspect-ratio: 4/3; cursor: pointer; overflow: hidden;
+  background: var(--color-gray-light);
+}
+.gallery__thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.2s;
+}
+.gallery__thumb:hover img { transform: scale(1.05); }
+.gallery__more {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.2rem; font-weight: 700;
+}
+
+/* LIGHTBOX */
+.gallery__lightbox {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery__lightbox img {
+  max-width: 90vw; max-height: 85vh;
+  object-fit: contain; border-radius: var(--radius-sm);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.gallery__lb-close {
+  position: absolute; top: 20px; right: 20px;
+  background: rgba(255,255,255,0.15); border: none; color: white;
+  width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.gallery__lb-prev, .gallery__lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.15); border: none; color: white;
+  width: 48px; height: 48px; border-radius: 50%; font-size: 1.8rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.gallery__lb-prev:hover, .gallery__lb-next:hover { background: rgba(255,255,255,0.3); }
+.gallery__lb-prev { left: 20px; }
+.gallery__lb-next { right: 20px; }
+.gallery__lb-counter {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.6); font-size: 0.82rem;
+}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { usePartidos } from '../../hooks/useData';
 import AdminTable from '../components/AdminTable';
 import AdminForm from '../components/AdminForm';
+import AdminFotos from './AdminFotos';
 import './AdminPage.css';
 
 const FIELDS = [
@@ -34,6 +35,7 @@ export default function AdminPartidos() {
   const { partidos, add, update, remove } = usePartidos();
   const [form, setForm] = useState(null);
   const [editing, setEditing] = useState(null);
+  const [fotosPartido, setFotosPartido] = useState(null);
 
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
   const openEdit = (p) => { setEditing(p._id); setForm({ ...p }); };
@@ -54,13 +56,25 @@ export default function AdminPartidos() {
         </div>
         <button className="admin-btn admin-btn--edit" onClick={openAdd}>+ Añadir partido</button>
       </div>
-      <AdminTable cols={COLS} rows={sorted} onEdit={openEdit} onDelete={remove} />
+
+      <AdminTable
+        cols={COLS}
+        rows={sorted}
+        onEdit={openEdit}
+        onDelete={remove}
+        onFotos={setFotosPartido}
+      />
+
       {form && (
         <AdminForm
           fields={FIELDS} values={form} onChange={handleChange}
           onSubmit={handleSubmit} onCancel={() => setForm(null)}
           submitLabel={editing ? 'Guardar cambios' : 'Añadir partido'}
         />
+      )}
+
+      {fotosPartido && (
+        <AdminFotos partido={fotosPartido} onClose={() => setFotosPartido(null)} />
       )}
     </div>
   );

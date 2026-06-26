@@ -6,7 +6,9 @@ import Partidos from './pages/Partidos';
 import Noticias from './pages/Noticias';
 import Campo from './pages/Campo';
 import Liga from './pages/Liga';
+import Temporada from './pages/Temporada';
 import AdminApp from './admin/AdminApp';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
@@ -22,9 +24,11 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/plantilla" element={<Plantilla />} />
               <Route path="/partidos" element={<Partidos />} />
+              <Route path="/temporada" element={<Temporada />} />
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/campo" element={<Campo />} />
               <Route path="/liga" element={<Liga />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         } />

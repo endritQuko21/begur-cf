@@ -11,6 +11,7 @@ const links = [
   { to: '/', label: 'Inicio' },
   { to: '/plantilla', label: 'Plantilla' },
   { to: '/partidos', label: 'Partidos' },
+  { to: '/temporada', label: 'Temporada' },
   { to: '/liga', label: 'Liga' },
   { to: '/noticias', label: 'Noticias' },
   { to: '/campo', label: 'Campo' },

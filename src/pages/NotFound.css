@@ -1,0 +1,77 @@
+.notfound {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-blue-dark) 0%, var(--color-black) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Escudo de fondo */
+.notfound::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: url('/escudo.png') center/contain no-repeat;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.notfound__escudo {
+  width: 80px; height: 80px;
+  position: relative; z-index: 1;
+}
+.notfound__escudo img {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+}
+
+.notfound__num {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 12rem);
+  color: rgba(255,255,255,0.08);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  position: relative; z-index: 1;
+  margin: -8px 0;
+}
+.notfound__num span { color: var(--color-red); }
+
+.notfound__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: white;
+  letter-spacing: 0.06em;
+  position: relative; z-index: 1;
+}
+
+.notfound__sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  position: relative; z-index: 1;
+}
+
+.notfound__btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 13px 28px;
+  background: var(--color-red);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background 0.15s, transform 0.15s;
+  position: relative; z-index: 1;
+}
+.notfound__btn:hover {
+  background: var(--color-red-dark);
+  transform: translateY(-2px);
+}

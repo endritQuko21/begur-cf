@@ -202,3 +202,14 @@
   .hero__content { grid-template-columns: 1fr; }
   .hero__right { display: none; } /* ocultar en móvil pequeño */
 }
+
+.hero__escudo {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  opacity: 0.04;
+  pointer-events: none;
+  filter: grayscale(1);
+}

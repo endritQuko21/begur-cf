@@ -86,6 +86,7 @@ export default function Home() {
             <HeroCard />
           </div>
         </div>
+        <img src="/escudo.png" alt="" className="hero__escudo" aria-hidden="true" />
         <div className="hero__diagonal" />
       </section>
 

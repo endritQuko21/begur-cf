@@ -1,9 +1,0 @@
-.partidos__cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-.partidos__list { display: grid; gap: 16px; }
-@media (max-width: 768px) {
-  .partidos__cols { grid-template-columns: 1fr; }
-}

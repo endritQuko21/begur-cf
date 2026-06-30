@@ -1,47 +1,55 @@
-.league-table {
-  overflow-x: auto;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  background: var(--color-white);
-}
+.league-table { overflow-x: auto; }
 .league-table table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 .league-table thead tr {
-  background: var(--color-blue-dark);
-  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.04);
 }
 .league-table th {
-  padding: 12px 14px;
+  padding: 14px 16px;
   text-align: center;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .league-table th.league-table__equipo-col { text-align: left; }
+
 .league-table td {
-  padding: 11px 14px;
+  padding: 13px 16px;
   text-align: center;
-  border-bottom: 1px solid var(--color-gray-mid);
-  color: var(--color-black);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.75);
 }
 .league-table tbody tr:last-child td { border-bottom: none; }
-.league-table tbody tr:hover { background: var(--color-gray-light); }
+.league-table tbody tr {
+  transition: background 0.15s;
+}
+.league-table tbody tr:hover { background: rgba(255,255,255,0.03); }
 
 /* Fila del Begur */
 .league-table__us {
-  background: rgba(200,16,46,0.05) !important;
-  font-weight: 600;
+  background: rgba(200,16,46,0.08) !important;
 }
-.league-table__us td { border-color: rgba(200,16,46,0.15); }
+.league-table__us td {
+  color: white;
+  font-weight: 600;
+  border-color: rgba(200,16,46,0.2);
+}
 
 .league-table__nombre {
   text-align: left !important;
   font-weight: 500;
   white-space: nowrap;
+}
+.league-table__nombre-flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .league-table__escudo { font-size: 0.85rem; }
 
@@ -50,24 +58,26 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  background: var(--color-gray-light);
-  color: var(--color-gray-text);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.5);
 }
 .pos-badge--top { background: var(--color-blue); color: white; }
 .pos-badge--us { background: var(--color-red); color: white; }
 
 .league-table__pts {
   font-family: var(--font-display);
-  font-size: 1.05rem !important;
-  color: var(--color-black);
+  font-size: 1.1rem !important;
+  color: white !important;
   font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 @media (max-width: 480px) {
   .league-table__hide-sm { display: none; }
+  .league-table td, .league-table th { padding: 10px 10px; }
 }

@@ -94,10 +94,12 @@ export default function Home() {
       {proximoConFecha && <Countdown partido={proximoConFecha} />}
 
       {/* CLASIFICACIÓN */}
-      <section className="section section--gray">
+      <section className="section" style={{ background: '#0d0d0d' }}>
         <div className="container">
-          <SectionTitle title="Clasificación" subtitle="Regional Preferent Girona" />
-          <LeagueTable maxRows={5} />
+          <SectionTitle title="Clasificación" subtitle="Regional Preferent Girona" light />
+          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
+            <LeagueTable maxRows={5} />
+          </div>
           <Link to="/liga" className="btn btn--primary home__link" style={{ marginTop: '20px' }}>
             Ver clasificación completa →
           </Link>

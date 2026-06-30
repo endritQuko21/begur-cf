@@ -30,7 +30,7 @@ export default function LeagueTable({ maxRows }) {
               </td>
               <td className="league-table__nombre">
                 {row.esNosotros
-                  ? <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  ? <span className="league-table__nombre-flex">
                       <span className="league-table__escudo">⚽</span>
                       {row.equipo}
                     </span>

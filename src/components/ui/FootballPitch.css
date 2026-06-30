@@ -26,3 +26,7 @@
 }
 .pitch-legend__primary { background: var(--color-red); }
 .pitch-legend__secondary { background: var(--color-blue); }
+
+.pitch-legend {
+  color: rgba(255,255,255,0.4);
+}

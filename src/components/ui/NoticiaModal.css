@@ -1,0 +1,136 @@
+.nmodal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.nmodal {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* HERO IMG */
+.nmodal__hero {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+.nmodal__hero img { width: 100%; height: 100%; object-fit: cover; }
+.nmodal__hero-placeholder { width: 100%; height: 100%; }
+.nmodal__hero-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, rgba(22,22,22,0.95) 100%);
+}
+.nmodal__close {
+  position: absolute; top: 18px; right: 18px;
+  background: rgba(0,0,0,0.5);
+  border: none; color: white;
+  width: 36px; height: 36px; border-radius: 50%;
+  font-size: 0.95rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.nmodal__close:hover { background: rgba(0,0,0,0.7); }
+.nmodal__cat {
+  position: absolute; bottom: 18px; left: 28px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+/* BODY */
+.nmodal__body {
+  padding: 28px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nmodal__fecha {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.nmodal__titulo {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: white;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-top: 4px;
+}
+.nmodal__divider {
+  width: 48px; height: 3px;
+  background: var(--color-red);
+  border-radius: 2px;
+  margin: 16px 0 4px;
+}
+.nmodal__lead {
+  font-size: 1.02rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  font-weight: 500;
+}
+.nmodal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+.nmodal__content p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+
+.nmodal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.nmodal__footer-brand {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+.nmodal__share {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.6);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+}
+.nmodal__share:hover { background: rgba(255,255,255,0.1); color: white; }
+
+@media (max-width: 600px) {
+  .nmodal__hero { height: 200px; }
+  .nmodal__body { padding: 22px 22px 28px; }
+}

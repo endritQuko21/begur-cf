@@ -6,29 +6,48 @@ const posicionColor = {
   Centrocampista: '#1a5c1a',
   Delantero: '#b07800',
 };
+const posicionAbrev = {
+  Portero: 'POR',
+  Defensa: 'DEF',
+  Centrocampista: 'CEN',
+  Delantero: 'DEL',
+};
 
 export default function PlayerCard({ jugador, onClick }) {
   const color = posicionColor[jugador.posicion] || '#333';
+  const iniciales = jugador.nombre.split(' ').map(n => n[0]).join('').slice(0, 2);
+
   return (
-    <div className="player-card" onClick={onClick} role="button" tabIndex={0}
-      onKeyDown={e => e.key === 'Enter' && onClick()}>
-      <div className="player-card__dorsal" style={{ background: color }}>
-        {jugador.dorsal}
+    <div
+      className="pcard"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={e => e.key === 'Enter' && onClick()}
+      style={{ '--pcard-color': color }}
+    >
+      <div className="pcard__top">
+        <span className="pcard__dorsal">{jugador.dorsal}</span>
+        <span className="pcard__pos-tag">{posicionAbrev[jugador.posicion]}</span>
       </div>
-      <div className="player-card__avatar">
+
+      <div className="pcard__avatar">
         {jugador.foto
           ? <img src={jugador.foto} alt={jugador.nombre} />
-          : <div className="player-card__placeholder">
-              {jugador.nombre.split(' ').map(n => n[0]).join('')}
-            </div>
+          : <span className="pcard__initials">{iniciales}</span>
         }
+        <div className="pcard__avatar-glow" />
       </div>
-      <div className="player-card__info">
-        <span className="player-card__nombre">{jugador.nombre}</span>
-        <span className="player-card__pos" style={{ color }}>{jugador.posicion}</span>
-        <span className="player-card__edad">{jugador.edad} años</span>
+
+      <div className="pcard__info">
+        <span className="pcard__nombre">{jugador.nombre}</span>
+        <span className="pcard__edad">{jugador.edad} años</span>
       </div>
-      <div className="player-card__cta">Ver perfil →</div>
+
+      <div className="pcard__footer">
+        <span>Ver perfil</span>
+        <span className="pcard__arrow">→</span>
+      </div>
     </div>
   );
 }

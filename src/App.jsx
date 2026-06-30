@@ -8,10 +8,12 @@ import Liga from './pages/Liga';
 import Temporada from './pages/Temporada';
 import AdminApp from './admin/AdminApp';
 import NotFound from './pages/NotFound';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Admin — sin Layout público */}
         <Route path="/admin/*" element={<AdminApp />} />

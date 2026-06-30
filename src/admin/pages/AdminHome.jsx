@@ -15,7 +15,7 @@ export default function AdminHome() {
     { label: 'Staff', value: staff.length, to: '/admin/staff', color: 'var(--color-red)' },
     { label: 'Partidos', value: proximos, to: '/admin/partidos', color: '#eed233' },
     { label: 'Noticias', value: noticias.length, to: '/admin/noticias', color: '#1a5c1a' },
-    { label: 'Clasificación', value: partidos.length, to: '/admin/clasificacion', color: '#b07800' },
+    { label: 'Clasificación', value: "TOP", to: '/admin/clasificacion', color: '#b07800' },
   ];
 
   return (

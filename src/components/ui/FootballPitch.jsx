@@ -2,18 +2,18 @@ import './FootballPitch.css';
 
 // Coordenadas (x, y) en % sobre el campo (vista desde arriba, ataque hacia arriba)
 const POSITION_COORDS = {
-  POR:  { x: 50, y: 88, label: 'POR' },
-  LD:  { x: 80, y: 72, label: 'LD' },
-  DFC:  { x: 50, y: 72, label: 'DC' },
-  LI:  { x: 20, y: 72, label: 'LI' },
+  POR: { x: 50, y: 88, label: 'POR' },
+  LD:  { x: 80, y: 72, label: 'LD'  },
+  DFC: { x: 50, y: 72, label: 'DFC' },
+  LI:  { x: 20, y: 72, label: 'LI'  },
   MCD: { x: 50, y: 57, label: 'MCD' },
-  MD:  { x: 82, y: 45, label: 'MD' },
-  MC:  { x: 50, y: 45, label: 'MC' },
-  MI:  { x: 18, y: 45, label: 'MI' },
+  MD:  { x: 82, y: 45, label: 'MD'  },
+  MC:  { x: 50, y: 45, label: 'MC'  },
+  MI:  { x: 18, y: 45, label: 'MI'  },
   MCO: { x: 50, y: 32, label: 'MCO' },
-  ED:  { x: 80, y: 20, label: 'ED' },
-  DC:  { x: 50, y: 16, label: 'DEL' },
-  EI:  { x: 20, y: 20, label: 'EI' },
+  ED:  { x: 80, y: 20, label: 'ED'  },
+  DC:  { x: 50, y: 16, label: 'DC'  },
+  EI:  { x: 20, y: 20, label: 'EI'  },
 };
 
 export default function FootballPitch({ posiciones = [], primaryPosition }) {

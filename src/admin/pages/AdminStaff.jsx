@@ -24,6 +24,7 @@ export default function AdminStaff() {
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
   const openEdit = (s) => {
     setEditing(s._id);
+    setForm({ ...s });
   };
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
   const handleSubmit = () => {

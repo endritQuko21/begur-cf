@@ -13,7 +13,7 @@ const FIELDS = [
     { value: 'Centrocampista', label: 'Centrocampista' },
     { value: 'Delantero', label: 'Delantero' },
   ]},
-  { key: 'posicionesStr', label: 'Posiciones (separadas por coma: GK, CB, LB...)', placeholder: 'ej: CB, LB' },
+  { key: 'posicionesStr', label: 'Posiciones (separadas por coma: DFC, MC, DC...)', placeholder: 'ej: CB, LB' },
   { key: 'edad', label: 'Edad', type: 'number' },
   { key: 'nacionalidad', label: 'Nacionalidad' },
   { key: 'descripcion', label: 'Descripción', type: 'textarea' },

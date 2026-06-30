@@ -1,22 +1,37 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useFotos } from '../../hooks/useFotos';
 import './AdminPage.css';
 import './AdminFotos.css';
 
 export default function AdminFotos({ partido, onClose }) {
-  const { fotos, loading, uploading, progress, upload, remove } = useFotos(partido._id);
+  const { fotos, loading, error, uploading, progress, upload, remove } = useFotos(partido._id);
   const inputRef = useRef();
+  const [uploadError, setUploadError] = useState(null);
 
   const handleFiles = async (e) => {
     const files = Array.from(e.target.files);
-    for (const file of files) await upload(file);
+    setUploadError(null);
+    for (const file of files) {
+      try {
+        await upload(file);
+      } catch (err) {
+        setUploadError(err.message);
+      }
+    }
     inputRef.current.value = '';
   };
 
   const handleDrop = async (e) => {
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
-    for (const file of files) await upload(file);
+    setUploadError(null);
+    for (const file of files) {
+      try {
+        await upload(file);
+      } catch (err) {
+        setUploadError(err.message);
+      }
+    }
   };
 
   return (
@@ -30,7 +45,6 @@ export default function AdminFotos({ partido, onClose }) {
           <button className="admin-fotos__close" onClick={onClose}>✕</button>
         </div>
 
-        {/* Drop zone */}
         <div
           className="admin-fotos__dropzone"
           onDragOver={e => e.preventDefault()}
@@ -52,7 +66,18 @@ export default function AdminFotos({ partido, onClose }) {
           )}
         </div>
 
-        {/* Grid de fotos */}
+        {uploadError && (
+          <p style={{ color: '#ff8080', fontSize: '0.85rem', textAlign: 'center' }}>
+            ⚠️ {uploadError}
+          </p>
+        )}
+
+        {error && (
+          <p style={{ color: '#ff8080', fontSize: '0.85rem', textAlign: 'center' }}>
+            ⚠️ Error cargando fotos: {error}
+          </p>
+        )}
+
         {loading ? (
           <p style={{ color: 'var(--color-gray-text)', textAlign: 'center' }}>Cargando...</p>
         ) : fotos.length === 0 ? (
@@ -61,7 +86,7 @@ export default function AdminFotos({ partido, onClose }) {
           <div className="admin-fotos__grid">
             {fotos.map(foto => (
               <div key={foto._id} className="admin-fotos__item">
-                <img src={foto.url} alt="" />
+                <img src={foto.url} alt="" loading="lazy" />
                 <button className="admin-fotos__delete" onClick={() => remove(foto)}>✕</button>
               </div>
             ))}

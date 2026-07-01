@@ -15,7 +15,7 @@ export default function MatchCard({ partido }) {
         </span>
       </div>
       <div className="match-card__teams">
-        <span className="match-card__team">Begur C.F. A</span>
+        <span className="match-card__team">BEGUR C.F. A</span>
         {partido.resultado
           ? <span className="match-card__result">{partido.resultado}</span>
           : <span className="match-card__vs">VS</span>

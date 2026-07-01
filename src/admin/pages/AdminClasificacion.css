@@ -5,3 +5,20 @@
 .admin-clas-table tbody tr:last-child td { border-bottom: none; }
 .admin-clas-table tbody tr:hover { background: #fafafa; }
 .admin-clas-table__us { background: rgba(200,16,46,0.05) !important; font-weight: 600; }
+
+.admin-confirm-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  z-index: 300; display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.admin-confirm {
+  background: white; border-radius: var(--radius-lg);
+  padding: 32px; width: 100%; max-width: 460px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.admin-confirm h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; letter-spacing: 0.03em;
+}
+.admin-confirm p { font-size: 0.88rem; color: var(--color-gray-text); line-height: 1.5; }

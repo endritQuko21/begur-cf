@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  collection, getDocs, addDoc, updateDoc, deleteDoc,
+  collection, addDoc, updateDoc, deleteDoc,
   doc, setDoc, onSnapshot, orderBy, query
 } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -13,16 +13,18 @@ import { clasificacion as defaultClasificacion } from '../data/clasificacion';
 // ─── JUGADORES ───────────────────────────────────────────
 export function useJugadores() {
   const [jugadores, setJugadores] = useState([]);
+  const [staff, setStaff] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const q = query(collection(db, 'jugadores'), orderBy('dorsal'));
     const unsub = onSnapshot(q, snap => {
       if (snap.empty) {
-        // Primera vez: seed con datos por defecto
         defaultJugadores.forEach(j => addDoc(collection(db, 'jugadores'), j));
       } else {
-        setJugadores(snap.docs.map(d => ({ ...d.data(), _id: d.id })));
+        const all = snap.docs.map(d => ({ ...d.data(), _id: d.id }));
+        setJugadores(all.filter(j => !j.esStaff));
+        setStaff(all.filter(j => j.esStaff));
       }
       setLoading(false);
     });
@@ -33,7 +35,7 @@ export function useJugadores() {
   const update = (id, j) => updateDoc(doc(db, 'jugadores', id), j);
   const remove = (id) => deleteDoc(doc(db, 'jugadores', id));
 
-  return { jugadores, loading, add, update, remove };
+  return { jugadores, staff, loading, add, update, remove };
 }
 
 // ─── STAFF ───────────────────────────────────────────
@@ -118,20 +120,61 @@ export function useClasificacion() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const q = query(collection(db, 'clasificacion'), orderBy('pos'));
-    const unsub = onSnapshot(q, snap => {
+    const unsub = onSnapshot(collection(db, 'clasificacion'), snap => {
       if (snap.empty) {
-        defaultClasificacion.forEach(c => setDoc(doc(db, 'clasificacion', String(c.pos)), c));
+        defaultClasificacion.forEach(c =>
+          setDoc(doc(db, 'clasificacion', String(c.pos)), c)
+        );
       } else {
-        setClasificacion(snap.docs.map(d => ({ ...d.data(), _id: d.id })));
+        const rows = snap.docs.map(d => ({ ...d.data(), _id: d.id }));
+        // Ordenar por puntos desc, y en caso de empate por diferencia de goles
+        rows.sort((a, b) => {
+          const ptsDiff = (b.pts || 0) - (a.pts || 0);
+          if (ptsDiff !== 0) return ptsDiff;
+          const dgA = (a.gf || 0) - (a.gc || 0);
+          const dgB = (b.gf || 0) - (b.gc || 0);
+          return dgB - dgA;
+        });
+        // Recalcular posiciones según el orden real
+        rows.forEach((r, i) => { r.pos = i + 1; });
+        setClasificacion(rows);
       }
       setLoading(false);
     });
     return unsub;
   }, []);
 
-  const update = (id, data) => updateDoc(doc(db, 'clasificacion', id), data);
-  const set = (data) => data.forEach(c => setDoc(doc(db, 'clasificacion', String(c.pos)), c));
+  const add = async (equipo) => {
+    const newDoc = {
+      equipo: equipo.equipo,
+      pj: Number(equipo.pj) || 0,
+      g: Number(equipo.g) || 0,
+      e: Number(equipo.e) || 0,
+      p: Number(equipo.p) || 0,
+      gf: Number(equipo.gf) || 0,
+      gc: Number(equipo.gc) || 0,
+      pts: Number(equipo.pts) || 0,
+      esNosotros: equipo.esNosotros || false,
+    };
+    return addDoc(collection(db, 'clasificacion'), newDoc);
+  };
 
-  return { clasificacion, loading, update, set };
+  const update = (id, data) => {
+    const clean = {
+      equipo: data.equipo,
+      pj: Number(data.pj) || 0,
+      g: Number(data.g) || 0,
+      e: Number(data.e) || 0,
+      p: Number(data.p) || 0,
+      gf: Number(data.gf) || 0,
+      gc: Number(data.gc) || 0,
+      pts: Number(data.pts) || 0,
+      esNosotros: data.esNosotros || false,
+    };
+    return updateDoc(doc(db, 'clasificacion', id), clean);
+  };
+
+  const remove = (id) => deleteDoc(doc(db, 'clasificacion', id));
+
+  return { clasificacion, loading, add, update, remove };
 }

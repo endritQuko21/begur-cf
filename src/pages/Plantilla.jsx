@@ -20,7 +20,7 @@ function HeroStats({ jugadores, staff }) {
     { num: jugadores.length, label: 'Jugadores' },
     { num: staff.length, label: 'Cuerpo técnico' },
     { num: edadMedia, label: 'Edad media' },
-    { num: '2024-25', label: 'Temporada' },
+    { num: '2026-27', label: 'Temporada' },
   ];
   return (
     <div className="plantilla-hero__stats">

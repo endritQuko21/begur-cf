@@ -5,8 +5,8 @@
 
 body {
   font-family: var(--font-body);
-  background: var(--color-white);
-  color: var(--color-black);
+  background: #080810;
+  color: var(--color-white);
   -webkit-font-smoothing: antialiased;
 }
 

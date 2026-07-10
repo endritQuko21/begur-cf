@@ -90,7 +90,7 @@ export default function AdminClasificacion() {
       <div className="admin-page__header">
         <div>
           <h1 className="admin-page__title">Clasificación</h1>
-          <p className="admin-page__sub">{clasificacion.length} equipos · ordenados por puntos</p>
+          <p className="admin-page__sub">{clasificacion.length} equipos · Ordenados por puntos</p>
         </div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <button className="admin-btn admin-btn--edit" onClick={openAdd}>

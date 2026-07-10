@@ -145,7 +145,7 @@ export default function Home() {
               <img src="/escudo.png" alt="Begur CF" className="hero__topbar-escudo" />
               <div>
                 <span className="hero__topbar-name">BEGUR C.F.</span>
-                <span className="hero__topbar-league">Regional Preferent Girona</span>
+                <span className="hero__topbar-league">Segona Catalana - Grup 1</span>
               </div>
             </div>
             <div className="hero__topbar-right">

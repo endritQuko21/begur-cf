@@ -36,9 +36,9 @@ export default function Liga() {
       <div className="liga-hero">
         <img src="/escudo.png" alt="" className="liga-hero__escudo" aria-hidden="true" />
         <div className="container">
-          <span className="liga-hero__eyebrow">Temporada 2024 – 25</span>
+          <span className="liga-hero__eyebrow">Temporada 2026 – 27</span>
           <h1 className="liga-hero__title">Clasificación</h1>
-          <p className="liga-hero__sub">Segona Catalana - Grup 1 · Grupo 3</p>
+          <p className="liga-hero__sub">Segunda Catalana · Grupo 3</p>
           {!loading && <LigaStats clasificacion={clasificacion} />}
         </div>
       </div>

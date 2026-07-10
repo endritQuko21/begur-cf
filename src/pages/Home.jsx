@@ -145,13 +145,13 @@ export default function Home() {
               <img src="/escudo.png" alt="Begur CF" className="hero__topbar-escudo" />
               <div>
                 <span className="hero__topbar-name">BEGUR C.F.</span>
-                <span className="hero__topbar-league">Segona Catalana - Grup 1</span>
+                <span className="hero__topbar-league">Segunda Catalana - Grup 1</span>
               </div>
             </div>
             <div className="hero__topbar-right">
               <span className="hero__topbar-season">
                 <span className="hero__topbar-dot" />
-                Temporada 2024 – 25
+                Temporada 2026 – 27
               </span>
             </div>
           </div>

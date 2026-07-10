@@ -74,7 +74,7 @@ export default function Navbar() {
             <img src="/escudo.png" alt="Begur CF" className="mobile-menu__escudo" />
             <div>
               <div className="mobile-menu__name">BEGUR C.F.</div>
-              <div className="mobile-menu__sub">Temporada 2024-25</div>
+              <div className="mobile-menu__sub">temporada 2026-27</div>
             </div>
           </div>
           <nav className="mobile-menu__nav">

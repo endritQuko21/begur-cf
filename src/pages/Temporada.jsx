@@ -172,7 +172,7 @@ export default function Temporada() {
       {/* HERO */}
       <div className="temporada__hero">
         <div className="container">
-          <SectionTitle title="Temporada 2024-25" subtitle="Seguimiento completo · Segona Catalana - Grup 1" light />
+          <SectionTitle title="temporada 2026-27" subtitle="Seguimiento completo · Segunda Catalana - Grup 1" light />
           {!loading && <GlobalStats partidos={sorted} />}
           {!loading && <RachaBar partidos={sorted} />}
         </div>

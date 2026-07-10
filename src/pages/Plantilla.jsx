@@ -53,7 +53,7 @@ export default function Plantilla() {
       <div className="plantilla-hero">
         <img src="/escudo.png" alt="" className="plantilla-hero__escudo" aria-hidden="true" />
         <div className="container">
-          <span className="plantilla-hero__eyebrow">Temporada 2024 – 25</span>
+          <span className="plantilla-hero__eyebrow">Temporada 2026 – 27</span>
           <h1 className="plantilla-hero__title">La Plantilla</h1>
           <p className="plantilla-hero__sub">Conoce a los jugadores que defienden los colores del Begur C.F. A</p>
           {!loading && <HeroStats jugadores={jugadores} staff={staff} />}

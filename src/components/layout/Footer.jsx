@@ -46,7 +46,7 @@ export default function Footer() {
       <div className="footer__cta-band">
         <div className="container footer__cta-inner">
           <div className="footer__cta-text">
-            <span className="footer__cta-eyebrow">Temporada 2024 – 25</span>
+            <span className="footer__cta-eyebrow">Temporada 2026 – 27</span>
             <h2 className="footer__cta-title">Tots som Begur</h2>
           </div>
           <div className="footer__cta-actions">
@@ -66,7 +66,7 @@ export default function Footer() {
             <img src="/escudo.png" alt="Begur CF" className="footer__brand-escudo" />
             <div className="footer__brand-text">
               <span className="footer__brand-name">BEGUR C.F. A</span>
-              <span className="footer__brand-league">Segona Catalana - Grup 1</span>
+              <span className="footer__brand-league">Segunda Catalana - Grup 1</span>
             </div>
             <p className="footer__brand-desc">
               Club de Futbol del Baix Empordà, defensor dels colors roig i blau des de fa dècades.

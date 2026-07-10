@@ -17,7 +17,7 @@ export default function AdminLogin({ onLogin }) {
       <div className="admin-login__box">
         <div className="admin-login__logo">BCF</div>
         <h1 className="admin-login__title">Panel Admin</h1>
-        <p className="admin-login__sub">Begur C.F. A · Temporada 2024-25</p>
+        <p className="admin-login__sub">Begur C.F. A · temporada 2026-27</p>
         <div className="admin-login__field">
           <label>Contraseña</label>
           <input

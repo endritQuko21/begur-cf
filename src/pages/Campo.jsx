@@ -6,175 +6,236 @@ const INSTALACIONES = [
     icon: '⚽',
     titulo: 'Camp de La Guarda',
     desc: 'Terreno de juego con gespa artificial de última generación, dimensiones reglamentarias y graderío cubierto.',
-    detalles: ['Gespa artificial', '~500 espectadores', 'Iluminación nocturna', 'Marcador electrónico'],
+    detalles: ['Gespa artificial', '~500 espectadors', 'Il·luminació nocturna', 'Marcador electrònic'],
+    color: '#C8102E',
   },
   {
     icon: '🚿',
-    titulo: 'Vestuarios',
+    titulo: 'Vestuaris',
     desc: 'Vestuarios renovados para equipo local, visitante y árbitros, con duchas individuales y taquillas.',
-    detalles: ['4 vestuarios', 'Duchas calientes', 'Sala fisioterapia', 'Taquillas individuales'],
+    detalles: ['4 vestuaris', 'Dutxes calentes', 'Sala fisio', 'Taquilles'],
+    color: '#003087',
   },
   {
     icon: '🅿️',
-    titulo: 'Aparcamiento',
+    titulo: 'Aparcament',
     desc: 'Zona de aparcamiento gratuita junto al recinto deportivo con capacidad para más de 80 vehículos.',
-    detalles: ['80+ plazas', 'Acceso directo', 'Zona bicicletas', 'Gratuito'],
+    detalles: ['80+ places', 'Accés directe', 'Zona bicicletes', 'Gratuït'],
+    color: '#1a5c1a',
   },
   {
-    icon: '🍻',
+    icon: '🍺',
     titulo: 'Bar del Club',
-    desc: 'Punto de encuentro de la afición antes y después de cada partido. Gestionado por voluntarios del club.',
-    detalles: ['Abierto en partidos', 'Terraza exterior', 'Pantalla TV', 'Eventos del club'],
+    desc: 'Punt de trobada de l\'afició abans i després de cada partit. Gestionat per voluntaris del club.',
+    detalles: ['Obert als partits', 'Terrassa exterior', 'Pantalla TV', 'Esdeveniments'],
+    color: '#b07800',
   },
 ];
 
 const CARTA = [
   {
-    categoria: 'Bebidas',
+    categoria: 'Begudes',
     icon: '🍺',
     items: [
       { nombre: 'Caña', precio: '2,00€' },
-      { nombre: 'Cerveza botella', precio: '2,50€' },
-      { nombre: 'Refresco', precio: '2,00€' },
-      { nombre: 'Agua', precio: '1,50€' },
-      { nombre: 'Vino / Vermut', precio: '2,50€' },
-      { nombre: 'Café', precio: '1,50€' },
+      { nombre: 'Cervesa ampolla', precio: '2,50€' },
+      { nombre: 'Refresc', precio: '2,00€' },
+      { nombre: 'Aigua', precio: '1,50€' },
+      { nombre: 'Vi / Vermut', precio: '2,50€' },
+      { nombre: 'Cafè', precio: '1,50€' },
     ],
   },
   {
-    categoria: 'Para picar',
+    categoria: 'Per picar',
     icon: '🥪',
     items: [
-      { nombre: 'Bocadillo de jamón', precio: '4,00€' },
-      { nombre: 'Bocadillo de tortilla', precio: '4,00€' },
-      { nombre: 'Patatas bravas', precio: '5,00€' },
+      { nombre: 'Entrepà de pernil', precio: '4,00€' },
+      { nombre: 'Entrepà de truita', precio: '4,00€' },
+      { nombre: 'Patates braves', precio: '5,00€' },
       { nombre: 'Pa amb tomàquet', precio: '3,00€' },
-      { nombre: 'Frutos secos', precio: '2,00€' },
-      { nombre: 'Patatas chips', precio: '2,00€' },
+      { nombre: 'Fruites seques', precio: '2,00€' },
+      { nombre: 'Patates xips', precio: '2,00€' },
     ],
   },
 ];
 
-function InstalacionCard({ inst }) {
-  return (
-    <div className="inst-card">
-      <span className="inst-card__icon">{inst.icon}</span>
-      <h3 className="inst-card__title">{inst.titulo}</h3>
-      <p className="inst-card__desc">{inst.desc}</p>
-      <div className="inst-card__tags">
-        {inst.detalles.map(d => (
-          <span key={d} className="inst-card__tag">{d}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Campo() {
-  const [tab, setTab] = useState('Bebidas');
+  const [tab, setTab] = useState('Begudes');
+  const [activeInst, setActiveInst] = useState(0);
 
   return (
-    <div className="campo-page">
+    <div className="cp">
 
-      {/* HERO */}
-      <div className="campo-hero">
-        <img src="/escudo.png" alt="" className="campo-hero__escudo" aria-hidden="true" />
-        <div className="container">
-          <span className="campo-hero__eyebrow">El club</span>
-          <h1 className="campo-hero__title">Instalaciones</h1>
-          <p className="campo-hero__sub">Camp de La Guarda · Begur, Baix Empordà</p>
+      {/* ── HERO ── */}
+      <section className="cp-hero">
+        <div className="cp-hero__bg">
+          <div className="cp-hero__gradient" />
+          <img src="/escudo.png" alt="" className="cp-hero__watermark" aria-hidden="true" />
         </div>
-      </div>
-
-      {/* GRID INSTALACIONES */}
-      <section className="campo-section">
-        <div className="container">
-          <div className="campo-grid">
-            {INSTALACIONES.map(inst => <InstalacionCard key={inst.titulo} inst={inst} />)}
-          </div>
-        </div>
-      </section>
-
-      {/* MAPA + INFO */}
-      <section className="campo-section campo-section--alt">
-        <div className="container campo-map-layout">
-
-          <div className="campo-map-info">
-            <h2 className="campo-section-title">Cómo llegar</h2>
-            <div className="campo-info-list">
-              <div className="campo-info-item">
-                <span className="campo-info-icon">📍</span>
-                <div>
-                  <strong>Dirección</strong>
-                  <p>Carrer de la Guarda, s/n<br />17255 Begur, Girona</p>
-                </div>
-              </div>
-              <div className="campo-info-item">
-                <span className="campo-info-icon">🕐</span>
-                <div>
-                  <strong>Horario de entrenamientos</strong>
-                  <p>Martes y jueves: 19:00 – 21:00<br />Partidos: según calendario</p>
-                </div>
-              </div>
-              <div className="campo-info-item">
-                <span className="campo-info-icon">🚗</span>
-                <div>
-                  <strong>Cómo llegar</strong>
-                  <p>A 5 min del centro de Begur.<br />Aparcamiento gratuito junto al campo.</p>
-                </div>
-              </div>
+        <div className="cp-hero__content container">
+          <div className="cp-hero__left">
+            <span className="cp-eyebrow">El Club · Begur</span>
+            <h1 className="cp-hero__title">Camp de<br /><span className="cp-hero__title-red">La Guarda</span></h1>
+            <p className="cp-hero__sub">Les nostres instal·lacions al Baix Empordà</p>
+            <div className="cp-hero__stats">
+              <div className="cp-hero__stat"><span>~500</span><small>Espectadors</small></div>
+              <div className="cp-hero__stat-sep" />
+              <div className="cp-hero__stat"><span>4</span><small>Vestuaris</small></div>
+              <div className="cp-hero__stat-sep" />
+              <div className="cp-hero__stat"><span>80+</span><small>Aparcament</small></div>
             </div>
           </div>
-
-          <div className="campo-map">
-            <iframe
-              title="Campo municipal de fútbol de Begur"
-              src="https://www.google.com/maps?q=Campo+municipal+de+futbol+de+Begur&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-
-        </div>
-      </section>
-
-      {/* BAR / CARTA */}
-      <section className="campo-section campo-bar">
-        <div className="container">
-          <div className="campo-bar__header">
-            <span className="campo-bar__icon">🍻</span>
-            <div>
-              <h2 className="campo-section-title">Bar del Club</h2>
-              <p className="campo-bar__sub">Antes y después de cada partido, la afición se reúne aquí.</p>
+          <div className="cp-hero__right">
+            <div className="cp-hero__pitch">
+              {/* SVG camp de futbol */}
+              <svg viewBox="0 0 300 200" className="cp-pitch-svg" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="200" fill="#1a4a1a" rx="8"/>
+                {[0,1,2,3,4].map(i => (
+                  <rect key={i} x="0" y={i*40} width="300" height="20"
+                    fill={i%2===0 ? '#1a4a1a' : '#1e521e'} rx="0"/>
+                ))}
+                <rect x="6" y="6" width="288" height="188" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" rx="4"/>
+                <line x1="6" y1="100" x2="294" y2="100"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <circle cx="150" cy="100" r="28" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <circle cx="150" cy="100" r="2" fill="rgba(255,255,255,0.7)"/>
+                <rect x="6" y="62" width="44" height="76" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <rect x="250" y="62" width="44" height="76" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <rect x="6" y="80" width="20" height="40" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <rect x="274" y="80" width="20" height="40" fill="none"
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <circle cx="50" cy="100" r="2" fill="rgba(255,255,255,0.5)"/>
+                <circle cx="250" cy="100" r="2" fill="rgba(255,255,255,0.5)"/>
+              </svg>
+              <div className="cp-pitch-label">Camp Municipal de La Guarda</div>
             </div>
           </div>
+        </div>
+        <div className="cp-hero__fade" />
+      </section>
 
-          <div className="campo-bar__tabs">
-            {CARTA.map(c => (
+      {/* ── INSTALACIONES INTERACTIVAS ── */}
+      <section className="cp-inst">
+        <div className="container cp-inst__inner">
+          <div className="cp-inst__tabs">
+            {INSTALACIONES.map((inst, i) => (
               <button
-                key={c.categoria}
-                className={`campo-bar__tab ${tab === c.categoria ? 'campo-bar__tab--active' : ''}`}
-                onClick={() => setTab(c.categoria)}
+                key={inst.titulo}
+                className={`cp-inst__tab ${activeInst === i ? 'cp-inst__tab--active' : ''}`}
+                onClick={() => setActiveInst(i)}
+                style={{ '--ic': inst.color }}
               >
-                {c.icon} {c.categoria}
+                <span className="cp-inst__tab-icon">{inst.icon}</span>
+                <span className="cp-inst__tab-label">{inst.titulo}</span>
               </button>
             ))}
           </div>
-
-          <div className="campo-bar__menu">
-            {CARTA.find(c => c.categoria === tab).items.map(item => (
-              <div key={item.nombre} className="campo-bar__item">
-                <span className="campo-bar__item-name">{item.nombre}</span>
-                <span className="campo-bar__item-dots" />
-                <span className="campo-bar__item-price">{item.precio}</span>
+          <div className="cp-inst__panel">
+            {INSTALACIONES.map((inst, i) => (
+              <div
+                key={inst.titulo}
+                className={`cp-inst__content ${activeInst === i ? 'cp-inst__content--active' : ''}`}
+                style={{ '--ic': inst.color }}
+              >
+                <div className="cp-inst__content-icon">{inst.icon}</div>
+                <div className="cp-inst__content-body">
+                  <h2 className="cp-inst__content-title">{inst.titulo}</h2>
+                  <p className="cp-inst__content-desc">{inst.desc}</p>
+                  <div className="cp-inst__content-tags">
+                    {inst.detalles.map(d => (
+                      <span key={d} className="cp-inst__tag">✓ {d}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <p className="campo-bar__nota">💛 Toda la recaudación del bar se destina íntegramente al club.</p>
+      {/* ── COM ARRIBAR + MAPA ── */}
+      <section className="cp-map-sec">
+        <div className="container cp-map-layout">
+          <div className="cp-map-info">
+            <span className="cp-eyebrow">Ubicació</span>
+            <h2 className="cp-map-title">Com arribar</h2>
+            <div className="cp-map-items">
+              {[
+                { icon: '📍', label: 'Adreça', val: 'Carrer de la Guarda, s/n\n17255 Begur, Girona' },
+                { icon: '🕐', label: 'Entrenaments', val: 'Dimarts i dijous: 19:00 – 21:00\nPartits: segons calendari' },
+                { icon: '🚗', label: 'Accés', val: 'A 5 min del centre de Begur\nAparcament gratuït al costat' },
+                { icon: '🚌', label: 'Transport', val: 'Bus L-251 parada Begur Centre\nTaxi disponible al municipi' },
+              ].map(item => (
+                <div key={item.label} className="cp-map-item">
+                  <div className="cp-map-item__icon">{item.icon}</div>
+                  <div>
+                    <strong>{item.label}</strong>
+                    {item.val.split('\n').map((line, i) => <p key={i}>{line}</p>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="cp-map-frame">
+            <div className="cp-map-frame__inner">
+              <iframe
+                title="Camp de La Guarda, Begur"
+                src="https://www.google.com/maps?q=Camp+municipal+de+futbol+Begur&output=embed"
+                width="100%" height="100%"
+                style={{ border: 0 }} allowFullScreen loading="lazy"
+              />
+            </div>
+            <div className="cp-map-frame__label">
+              <span>📍</span> Camp de La Guarda, Begur
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BAR ── */}
+      <section className="cp-bar">
+        <div className="container">
+          <div className="cp-bar__top">
+            <div>
+              <span className="cp-eyebrow">Punt de trobada</span>
+              <h2 className="cp-bar__title">Bar del Club</h2>
+              <p className="cp-bar__sub">Abans i després de cada partit, l'afició es reuneix aquí. Gestionat per voluntaris del club.</p>
+            </div>
+            <div className="cp-bar__badge">
+              <span>💛</span>
+              <span>Tots els beneficis van al club</span>
+            </div>
+          </div>
+
+          <div className="cp-bar__body">
+            <div className="cp-bar__tabs">
+              {CARTA.map(c => (
+                <button
+                  key={c.categoria}
+                  className={`cp-bar__tab ${tab === c.categoria ? 'cp-bar__tab--on' : ''}`}
+                  onClick={() => setTab(c.categoria)}
+                >
+                  <span>{c.icon}</span>
+                  <span>{c.categoria}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="cp-bar__menu">
+              {CARTA.find(c => c.categoria === tab)?.items.map((item, i) => (
+                <div key={item.nombre} className="cp-bar__row" style={{ '--ri': i }}>
+                  <span className="cp-bar__row-name">{item.nombre}</span>
+                  <span className="cp-bar__row-line" />
+                  <span className="cp-bar__row-price">{item.precio}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

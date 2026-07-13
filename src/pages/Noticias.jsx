@@ -126,7 +126,7 @@ export default function Noticias() {
       </header>
 
       {/* ── LAYOUT PRINCIPAL ── */}
-      {sorted.length === 3 ? (
+      {sorted.length === 0 ? (
         <div className="container np-empty">
           <p>Encara no hi ha notícies. Torna aviat!</p>
         </div>

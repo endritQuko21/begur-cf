@@ -5,10 +5,9 @@
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-page, #080810);
-  color: var(--text-primary, #ffffff);
+  background: #080810;
+  color: #000;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.3s, color 0.3s;
 }
 
 a { color: inherit; text-decoration: none; }

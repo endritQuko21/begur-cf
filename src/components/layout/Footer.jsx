@@ -121,7 +121,7 @@ export default function Footer() {
               <li className="footer__info-item">
                 <div className="footer__info-icon-wrap">📍</div>
                 <div>
-                  <strong>Camp de La Guarda</strong>
+                  <strong>Campo municipal de futbol de Begur</strong>
                   <span>Carrer de la Guarda, s/n<br />17255 Begur, Girona</span>
                 </div>
               </li>

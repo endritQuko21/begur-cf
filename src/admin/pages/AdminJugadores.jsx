@@ -13,10 +13,16 @@ const FIELDS = [
     { value: 'Centrocampista', label: 'Centrocampista' },
     { value: 'Delantero', label: 'Delantero' },
   ]},
-  { key: 'posicionesStr', label: 'Posiciones (separadas por coma: DFC, MC, DC...)', placeholder: 'ej: CB, LB' },
+  { key: 'posicionesStr', label: 'Posiciones (separadas por coma: GK, CB, LB...)', placeholder: 'ej: CB, LB' },
   { key: 'edad', label: 'Edad', type: 'number' },
   { key: 'nacionalidad', label: 'Nacionalidad' },
   { key: 'descripcion', label: 'Descripción', type: 'textarea' },
+  { key: 'stats_partidos',     label: '📊 Partidos jugados', type: 'number' },
+  { key: 'stats_goles',        label: '⚽ Goles', type: 'number' },
+  { key: 'stats_asistencias',  label: '🎯 Asistencias', type: 'number' },
+  { key: 'stats_tarjetasA',    label: '🟨 Tarjetas amarillas', type: 'number' },
+  { key: 'stats_tarjetasR',    label: '🟥 Tarjetas rojas', type: 'number' },
+  { key: 'stats_porteriaCero', label: '🧤 Porterías a cero (porteros)', type: 'number' },
 ];
 
 const COLS = [
@@ -26,7 +32,12 @@ const COLS = [
   { key: 'edad', label: 'Edad' },
 ];
 
-const empty = { nombre: '', dorsal: '', posicion: 'Portero', posicionesStr: '', edad: '', nacionalidad: 'España', descripcion: '' };
+const empty = {
+  nombre: '', dorsal: '', posicion: 'Portero', posicionesStr: '',
+  edad: '', nacionalidad: 'España', descripcion: '',
+  stats_partidos: 0, stats_goles: 0, stats_asistencias: 0,
+  stats_tarjetasA: 0, stats_tarjetasR: 0, stats_porteriaCero: 0,
+};
 
 export default function AdminJugadores() {
   const { jugadores, add, update, remove } = useJugadores();
@@ -34,13 +45,46 @@ export default function AdminJugadores() {
   const [editing, setEditing] = useState(null);
 
   const openAdd = () => { setEditing(null); setForm({ ...empty }); };
+
   const openEdit = (j) => {
     setEditing(j._id);
-    setForm({ ...j, posicionesStr: (j.posiciones || []).join(', ') });
+    setForm({
+      ...j,
+      posicionesStr: (j.posiciones || []).join(', '),
+      stats_partidos:     j.stats?.partidos     ?? 0,
+      stats_goles:        j.stats?.goles        ?? 0,
+      stats_asistencias:  j.stats?.asistencias  ?? 0,
+      stats_tarjetasA:    j.stats?.tarjetasA    ?? 0,
+      stats_tarjetasR:    j.stats?.tarjetasR    ?? 0,
+      stats_porteriaCero: j.stats?.porteriaCero ?? 0,
+    });
   };
+
   const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
+
   const handleSubmit = () => {
-    const data = { ...form, posiciones: form.posicionesStr.split(',').map(s => s.trim()).filter(Boolean), dorsal: Number(form.dorsal), edad: Number(form.edad) };
+    const data = {
+      ...form,
+      posiciones: form.posicionesStr.split(',').map(s => s.trim()).filter(Boolean),
+      dorsal: Number(form.dorsal),
+      edad: Number(form.edad),
+      stats: {
+        partidos:     Number(form.stats_partidos)     || 0,
+        goles:        Number(form.stats_goles)        || 0,
+        asistencias:  Number(form.stats_asistencias)  || 0,
+        tarjetasA:    Number(form.stats_tarjetasA)    || 0,
+        tarjetasR:    Number(form.stats_tarjetasR)    || 0,
+        porteriaCero: Number(form.stats_porteriaCero) || 0,
+      },
+    };
+    // Limpiar claves planas
+    delete data.stats_partidos;
+    delete data.stats_goles;
+    delete data.stats_asistencias;
+    delete data.stats_tarjetasA;
+    delete data.stats_tarjetasR;
+    delete data.stats_porteriaCero;
+
     editing ? update(editing, data) : add(data);
     setForm(null);
   };

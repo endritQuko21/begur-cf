@@ -2,7 +2,7 @@ export const noticias = [
   {
     id: 1,
     titulo: "Victoria en casa frente al CF Palamós",
-    resumen: "El equipo consiguió una importante victoria en el campo de La Guarda ante más de 200 espectadores.",
+    resumen: "El equipo consiguió una importante victoria en el Campo municipal de futbol de Begur ante más de 200 espectadores.",
     fecha: "2025-01-18",
     imagen: null,
     categoria: "Partido",
@@ -18,7 +18,7 @@ export const noticias = [
   },
   {
     id: 3,
-    titulo: "Jornada solidaria en La Guarda",
+    titulo: "Jornada solidaria en Begur",
     resumen: "El Begur CF organiza una jornada solidaria a beneficio de Cruz Roja Baix Empordà.",
     fecha: "2025-01-05",
     imagen: null,

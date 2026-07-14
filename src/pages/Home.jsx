@@ -104,7 +104,7 @@ export default function Home() {
   const sortedNoticias = [...noticias].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
   const ultimasNoticias = sortedNoticias.slice(0, 4);
   const nosotros = clasificacion.find(c => c.esNosotros);
-  const destacados = jugadores.slice(0, 12);
+  const destacados = jugadores.slice(0, 6);
 
   const v = sorted.filter(p => getResultado(p) === 'victoria').length;
   const e = sorted.filter(p => getResultado(p) === 'empate').length;
@@ -144,19 +144,19 @@ export default function Home() {
 
             {/* TÍTULO IZQUIERDA */}
             <div className="hero__title-block">
-              <div className="hero__pretitle">Club de Futbol · Baix Empordà</div>
+              <div className="hero__pretitle">Club de Futbol</div>
               <h1 className="hero__title">
                 <span className="hero__title-word hero__title-word--1">BEG</span>
                 <span className="hero__title-word hero__title-word--2">UR</span>
                 <br />
                 <span className="hero__title-word hero__title-word--3">C.F.</span>
-                <span className="hero__title-word hero__title-word--4 hero__title-a"> A</span>
+                <span className="hero__title-word hero__title-word--4 hero__title-a">A</span>
               </h1>
 
               {/* FORMA RECIENTE */}
               {ultimosJugados.length > 0 && (
                 <div className="hero__forma">
-                  <span className="hero__forma-label">Forma</span>
+                  <span className="hero__forma-label">Record</span>
                   {ultimosJugados.slice(-5).map((p, i) => {
                     const r = getResultado(p);
                     const m = RESULT_META[r];

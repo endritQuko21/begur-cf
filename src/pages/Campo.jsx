@@ -4,7 +4,7 @@ import './Campo.css';
 const INSTALACIONES = [
   {
     icon: '⚽',
-    titulo: 'Camp de La Guarda',
+    titulo: 'Campo municipal de futbol de Begur',
     desc: 'Terreno de juego con gespa artificial de última generación, dimensiones reglamentarias y graderío cubierto.',
     detalles: ['Gespa artificial', '~500 espectadors', 'Il·luminació nocturna', 'Marcador electrònic'],
     color: '#C8102E',
@@ -75,7 +75,7 @@ export default function Campo() {
         <div className="cp-hero__content container">
           <div className="cp-hero__left">
             <span className="cp-eyebrow">El Club · Begur</span>
-            <h1 className="cp-hero__title">Camp de<br /><span className="cp-hero__title-red">La Guarda</span></h1>
+            <h1 className="cp-hero__title">Campo municipal de<br /><span className="cp-hero__title-red">futbol de Begur</span></h1>
             <p className="cp-hero__sub">Les nostres instal·lacions al Baix Empordà</p>
             <div className="cp-hero__stats">
               <div className="cp-hero__stat"><span>~500</span><small>Espectadors</small></div>
@@ -112,7 +112,7 @@ export default function Campo() {
                 <circle cx="50" cy="100" r="2" fill="rgba(255,255,255,0.5)"/>
                 <circle cx="250" cy="100" r="2" fill="rgba(255,255,255,0.5)"/>
               </svg>
-              <div className="cp-pitch-label">Camp Municipal de La Guarda</div>
+              <div className="cp-pitch-label">Campo municipal de futbol de Begur</div>
             </div>
           </div>
         </div>
@@ -158,12 +158,12 @@ export default function Campo() {
         </div>
       </section>
 
-      {/* ── COM ARRIBAR + MAPA ── */}
+      {/* ── COMO LLEGAT + MAPA ── */}
       <section className="cp-map-sec">
         <div className="container cp-map-layout">
           <div className="cp-map-info">
-            <span className="cp-eyebrow">Ubicació</span>
-            <h2 className="cp-map-title">Com arribar</h2>
+            <span className="cp-eyebrow">Ubicación</span>
+            <h2 className="cp-map-title">Como llegar</h2>
             <div className="cp-map-items">
               {[
                 { icon: '📍', label: 'Adreça', val: 'Carrer de la Guarda, s/n\n17255 Begur, Girona' },
@@ -184,14 +184,14 @@ export default function Campo() {
           <div className="cp-map-frame">
             <div className="cp-map-frame__inner">
               <iframe
-                title="Camp de La Guarda, Begur"
+                title="Campo municipal de futbol de Begur"
                 src="https://www.google.com/maps?q=Camp+municipal+de+futbol+Begur&output=embed"
                 width="100%" height="100%"
                 style={{ border: 0 }} allowFullScreen loading="lazy"
               />
             </div>
             <div className="cp-map-frame__label">
-              <span>📍</span> Camp de La Guarda, Begur
+              <span>📍</span> Campo municipal de futbol de Begur
             </div>
           </div>
         </div>

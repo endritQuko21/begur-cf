@@ -22,3 +22,17 @@
   --max-width: 1200px;
   --navbar-height: 70px;
 }
+[data-theme="light"] {
+  --bg-page: #f4f4f8;
+  --bg-card: rgba(0,0,0,0.04);
+  --text-primary: #0a0a1a;
+  --text-muted: rgba(0,0,0,0.45);
+  --border: rgba(0,0,0,0.1);
+}
+[data-theme="dark"] {
+  --bg-page: #080810;
+  --bg-card: rgba(255,255,255,0.03);
+  --text-primary: #ffffff;
+  --text-muted: rgba(255,255,255,0.45);
+  --border: rgba(255,255,255,0.07);
+}

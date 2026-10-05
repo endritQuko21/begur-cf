@@ -6,12 +6,22 @@ import SectionTitle from "../components/ui/SectionTitle";
 import "./Temporada.css";
 
 // ─── Helpers ────────────────────────────────────────────
-function getResultado(partido) {
+function getResultado2(partido) {
   if (!partido.resultado) return null;
   const [g1, g2] = partido.resultado.split("-").map(Number);
   const esLocal = partido.lugar === "Casa";
   const golesBegur = esLocal ? g1 : g2;
   const golesRival = esLocal ? g2 : g1;
+  if (golesBegur > golesRival) return "victoria";
+  if (golesBegur < golesRival) return "derrota";
+  return "empate";
+}
+
+function getResultado(partido) {
+  if (!partido.resultado) return null;
+
+  const [golesBegur, golesRival] = partido.resultado.split("-").map(Number);
+
   if (golesBegur > golesRival) return "victoria";
   if (golesBegur < golesRival) return "derrota";
   return "empate";

@@ -21,12 +21,20 @@ const CATEGORIA_COLOR = {
   Otro: "#888",
 };
 
-function getResultado(p) {
+function getResultado2(p) {
   if (!p.resultado) return null;
   const [g1, g2] = p.resultado.split("-").map(Number);
   const esLocal = p.lugar === "Casa";
   const gb = esLocal ? g1 : g2,
     gr = esLocal ? g2 : g1;
+  if (gb > gr) return "victoria";
+  if (gb < gr) return "derrota";
+  return "empate";
+}
+
+function getResultado(p) {
+  if (!p.resultado) return null;
+  const [gb, gr] = p.resultado.split("-").map(Number);
   if (gb > gr) return "victoria";
   if (gb < gr) return "derrota";
   return "empate";

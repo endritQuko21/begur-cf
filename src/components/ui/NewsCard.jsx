@@ -20,7 +20,7 @@ export default function NewsCard({ noticia }) {
         <span className="news-card__fecha">{fecha}</span>
         <h3 className="news-card__titulo">{noticia.titulo}</h3>
         <p className="news-card__resumen">{noticia.resumen}</p>
-        <button className="news-card__btn">Llegir mes →</button>
+        <button className="news-card__btn">Llegir més →</button>
       </div>
     </div>
   );

@@ -25,15 +25,19 @@ function PlayerStats({ stats, posicion, color }) {
   const esPortero = posicion === "Portero";
   const items = esPortero
     ? [
-        { label: "Partidos", value: stats.partidos || 0, max: 30 },
-        { label: "Porterías a cero", value: stats.porteriaCero || 0, max: 20 },
-        { label: "Tarjetas amarillas", value: stats.tarjetasA || 0, max: 10 },
+        { label: "Partits", value: stats.partidos || 0, max: 30 },
+        { label: "Porteries a zero", value: stats.porteriaCero || 0, max: 20 },
+        { label: "Targetes grogues", value: stats.tarjetasA || 0, max: 10 },
       ]
     : [
-        { label: "Partidos", value: stats.partidos || 0, max: 30 },
-        { label: "Goles", value: stats.goles || 0, max: 15 },
-        { label: "Asistencias", value: stats.asistencias || 0, max: 15 },
-        { label: "Tarjetas amarillas", value: stats.tarjetasA || 0, max: 10 },
+        { label: "Partits", value: stats.partidos || 0, max: 30 },
+        { label: "Gols", value: stats.goles || 0, max: 15 },
+        {
+          label: "AsisteAssistènciesncias",
+          value: stats.asistencias || 0,
+          max: 15,
+        },
+        { label: "Targetes grogues", value: stats.tarjetasA || 0, max: 10 },
       ];
 
   return (

@@ -57,7 +57,7 @@ const RESULT_META = {
     color: "#ffc107",
     bg: "rgba(255,193,7,0.1)",
     letra: "E",
-    label: "Empate",
+    label: "Empat",
   },
 };
 
@@ -498,7 +498,7 @@ export default function Home() {
                 <h2 className="hsec__title">Plantilla</h2>
               </div>
               <Link to="/plantilla" className="hsec__more">
-                Veure completa →
+                Veure plantilla sencera →
               </Link>
             </div>
             <div className="hplayers">

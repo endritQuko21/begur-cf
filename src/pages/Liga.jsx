@@ -44,8 +44,8 @@ export default function Liga() {
         />
         <div className="container">
           <span className="liga-hero__eyebrow">Temporada 2026 – 27</span>
-          <h1 className="liga-hero__title">Clasificación</h1>
-          <p className="liga-hero__sub">Segunda Catalana · Grupo 3</p>
+          <h1 className="liga-hero__title">Clasificacio</h1>
+          <p className="liga-hero__sub">Segona Catalana · Grupo 3</p>
           {!loading && <LigaStats clasificacion={clasificacion} />}
         </div>
       </div>
@@ -57,9 +57,9 @@ export default function Liga() {
           <div className="liga-main">
             <div className="liga-table-card">
               <div className="liga-table-card__header">
-                <h2 className="liga-table-card__title">Tabla completa</h2>
+                <h2 className="liga-table-card__title">Taula completa</h2>
                 <span className="liga-table-card__sub">
-                  {clasificacion.length} equipos
+                  {clasificacion.length} equips
                 </span>
               </div>
               <LeagueTable />
@@ -69,14 +69,14 @@ export default function Liga() {
           {/* SIDEBAR */}
           <aside className="liga-sidebar">
             <div className="liga-card">
-              <h3 className="liga-card__title">Leyenda</h3>
+              <h3 className="liga-card__title">Llegenda</h3>
               <div className="liga-legend">
                 <div className="liga-legend__item">
                   <span
                     className="liga-legend__dot"
                     style={{ background: "var(--color-blue)" }}
                   />
-                  <span>Zona de ascenso</span>
+                  <span>Zona d'ascens</span>
                 </div>
                 <div className="liga-legend__item">
                   <span
@@ -90,7 +90,7 @@ export default function Liga() {
                     className="liga-legend__dot"
                     style={{ background: "rgba(255,255,255,0.15)" }}
                   />
-                  <span>Resto de equipos</span>
+                  <span>Resta d'equips</span>
                 </div>
               </div>
             </div>
@@ -100,27 +100,27 @@ export default function Liga() {
                 <h3 className="liga-card__title">Begur C.F. A</h3>
                 <div className="liga-mini-stats">
                   <div className="liga-mini-stat">
-                    <span>Posición</span>
+                    <span>Posicio</span>
                     <strong>{nosotros.pos}º</strong>
                   </div>
                   <div className="liga-mini-stat">
-                    <span>Ganados</span>
+                    <span>Guanyats</span>
                     <strong style={{ color: "#4caf50" }}>{nosotros.g}</strong>
                   </div>
                   <div className="liga-mini-stat">
-                    <span>Empatados</span>
+                    <span>Empatats</span>
                     <strong style={{ color: "#ffc107" }}>{nosotros.e}</strong>
                   </div>
                   <div className="liga-mini-stat">
-                    <span>Perdidos</span>
+                    <span>Perduts</span>
                     <strong style={{ color: "#C8102E" }}>{nosotros.p}</strong>
                   </div>
                   <div className="liga-mini-stat">
-                    <span>Goles a favor</span>
+                    <span>Gols a favor</span>
                     <strong>{nosotros.gf}</strong>
                   </div>
                   <div className="liga-mini-stat">
-                    <span>Goles en contra</span>
+                    <span>Gols en contra</span>
                     <strong>{nosotros.gc}</strong>
                   </div>
                 </div>

@@ -18,7 +18,7 @@ export default function LeagueTable({ maxRows }) {
           fontSize: "0.85rem",
         }}
       >
-        Cargando clasificación...
+        Carregant clasificaciO...
       </div>
     );
 
@@ -32,7 +32,7 @@ export default function LeagueTable({ maxRows }) {
           fontSize: "0.85rem",
         }}
       >
-        ⚠️ Error cargando datos de la FCF
+        ⚠️ Error carregant dades de la FCF
       </div>
     );
 
@@ -42,7 +42,7 @@ export default function LeagueTable({ maxRows }) {
         <thead>
           <tr>
             <th>#</th>
-            <th className="league-table__equipo-col">Equipo</th>
+            <th className="league-table__equipo-col">Equip</th>
             <th title="Partidos jugados">PJ</th>
             <th title="Ganados">G</th>
             <th title="Empatados">E</th>

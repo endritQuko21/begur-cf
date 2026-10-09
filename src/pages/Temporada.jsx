@@ -41,7 +41,7 @@ const META = {
     icon: "❌",
   },
   empate: {
-    texto: "Empate",
+    texto: "Empat",
     color: "#b07800",
     bg: "rgba(176,120,0,0.12)",
     icon: "🟡",
@@ -62,14 +62,14 @@ function GlobalStats({ partidos }) {
       {[
         {
           num: jugados.length,
-          label: "Jugados",
+          label: "Jugats",
           color: "rgba(255,255,255,0.9)",
         },
-        { num: v, label: "Victorias", color: "#4caf50" },
-        { num: e, label: "Empates", color: "#ffc107" },
-        { num: d, label: "Derrotas", color: "#C8102E" },
-        { num: pts, label: "Puntos", color: "#fff", highlight: true },
-        { num: `${pct}%`, label: "% victorias", color: "#6ab0ff" },
+        { num: v, label: "Victòries", color: "#4caf50" },
+        { num: e, label: "Empats", color: "#ffc107" },
+        { num: d, label: "Derrotes", color: "#C8102E" },
+        { num: pts, label: "Punts", color: "#fff", highlight: true },
+        { num: `${pct}%`, label: "% victòries", color: "#6ab0ff" },
       ].map((s) => (
         <div
           key={s.label}
@@ -91,7 +91,7 @@ function RachaBar({ partidos }) {
   if (!jugados.length) return null;
   return (
     <div className="racha">
-      <span className="racha__label">Racha · últimos {jugados.length}</span>
+      <span className="racha__label">Ratxa · últims {jugados.length}</span>
       <div className="racha__bar">
         {jugados.map((p, i) => {
           const r = getResultado(p);
@@ -185,7 +185,7 @@ function TimelineCard({ partido, index, total }) {
             </span>
           )}
           {esProximo && (
-            <span className="tl__badge tl__badge--next">Próximo</span>
+            <span className="tl__badge tl__badge--next">Pròxim</span>
           )}
         </div>
 
@@ -212,7 +212,7 @@ function TimelineCard({ partido, index, total }) {
           )}
           <div className="tl__team-block tl__team-block--right">
             <span className="tl__team-name">{partido.rival}</span>
-            <span className="tl__team-sub">Visitante</span>
+            <span className="tl__team-sub">Visitant</span>
           </div>
         </div>
 
@@ -246,7 +246,7 @@ export default function Temporada() {
         <div className="container">
           <SectionTitle
             title="temporada 2026-27"
-            subtitle="Seguimiento completo · Segunda Catalana - Grup 1"
+            subtitle="Seguiment complet · Segona Catalana - Grup 1"
             light
           />
           {!loading && <GlobalStats partidos={sorted} />}
@@ -261,12 +261,12 @@ export default function Temporada() {
           <aside className="temporada__filters">
             <p className="filters__title">Filtrar</p>
             {[
-              { key: "todos", label: "Todos" },
-              { key: "proximos", label: "🕐 Próximos" },
-              { key: "jugados", label: "⚽ Jugados" },
-              { key: "victoria", label: "✅ Victorias" },
-              { key: "empate", label: "🟡 Empates" },
-              { key: "derrota", label: "❌ Derrotas" },
+              { key: "todos", label: "Tots" },
+              { key: "proximos", label: "🕐 Proxims" },
+              { key: "jugados", label: "⚽ Jugats" },
+              { key: "victoria", label: "✅ Victories" },
+              { key: "empate", label: "🟡 Empats" },
+              { key: "derrota", label: "❌ Derrotes" },
             ].map((f) => (
               <button
                 key={f.key}
@@ -290,9 +290,9 @@ export default function Temporada() {
 
           {/* TIMELINE */}
           <div className="tl">
-            {loading && <p className="tl__loading">Cargando partidos...</p>}
+            {loading && <p className="tl__loading">Carregant partits...</p>}
             {!loading && filtrados.length === 0 && (
-              <p className="tl__empty">No hay partidos con este filtro.</p>
+              <p className="tl__empty">No hi ha partits amb aquest filtre.</p>
             )}
             {filtrados.map((p, i) => (
               <TimelineCard

@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import './Navbar.css';
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import "./Navbar.css";
 
 const links = [
-  { to: '/', label: 'Inicio' },
-  { to: '/plantilla', label: 'Plantilla' },
-  { to: '/temporada', label: 'Temporada' },
-  { to: '/liga', label: 'Liga' },
-  { to: '/noticias', label: 'Noticias' },
-  { to: '/campo', label: 'Campo' },
+  { to: "/", label: "Inici" },
+  { to: "/plantilla", label: "Plantilla" },
+  { to: "/temporada", label: "Temporada" },
+  { to: "/liga", label: "Lliga" },
+  { to: "/noticias", label: "Noticies" },
+  { to: "/campo", label: "Camp" },
 ];
 
 export default function Navbar() {
@@ -18,13 +18,15 @@ export default function Navbar() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   useEffect(() => {
@@ -33,12 +35,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
         <nav className="nav__links">
-          {links.map(l => (
+          {links.map((l) => (
             <NavLink
-              key={l.to} to={l.to} end={l.to === '/'}
-              className={({ isActive }) => `nav__link ${isActive ? 'nav__link--on' : ''}`}
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                `nav__link ${isActive ? "nav__link--on" : ""}`
+              }
             >
               {l.label}
             </NavLink>
@@ -48,21 +54,27 @@ export default function Navbar() {
 
       {/* FAB MÓVIL */}
       <button
-        className={`fab ${open ? 'fab--open' : ''}`}
-        onClick={() => setOpen(o => !o)}
+        className={`fab ${open ? "fab--open" : ""}`}
+        onClick={() => setOpen((o) => !o)}
         aria-label="Menú"
       >
-        <span /><span /><span />
+        <span />
+        <span />
+        <span />
       </button>
 
       {/* MENÚ MÓVIL PANTALLA COMPLETA */}
-      <div className={`fullmenu ${open ? 'fullmenu--open' : ''}`}>
+      <div className={`fullmenu ${open ? "fullmenu--open" : ""}`}>
         <nav className="fullmenu__nav">
           {links.map((l, i) => (
             <NavLink
-              key={l.to} to={l.to} end={l.to === '/'}
-              className={({ isActive }) => `fullmenu__link ${isActive ? 'fullmenu__link--on' : ''}`}
-              style={{ '--i': i }}
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                `fullmenu__link ${isActive ? "fullmenu__link--on" : ""}`
+              }
+              style={{ "--i": i }}
             >
               {l.label}
             </NavLink>

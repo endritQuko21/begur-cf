@@ -1,22 +1,31 @@
-import { useState } from 'react';
-import { useClasificacion } from '../../hooks/useData';
-import { usePartidos } from '../../hooks/useData';
-import AdminForm from '../components/AdminForm';
-import './AdminPage.css';
-import './AdminClasificacion.css';
+import { useState } from "react";
+import { useClasificacion } from "../../hooks/useData";
+import { usePartidos } from "../../hooks/useData";
+import AdminForm from "../components/AdminForm";
+import "./AdminPage.css";
+import "./AdminClasificacion.css";
 
 const FIELDS = [
-  { key: 'equipo', label: 'Nombre del equipo' },
-  { key: 'pj', label: 'Partidos jugados', type: 'number' },
-  { key: 'g',  label: 'Ganados', type: 'number' },
-  { key: 'e',  label: 'Empatados', type: 'number' },
-  { key: 'p',  label: 'Perdidos', type: 'number' },
-  { key: 'gf', label: 'Goles a favor', type: 'number' },
-  { key: 'gc', label: 'Goles en contra', type: 'number' },
-  { key: 'pts', label: 'Puntos', type: 'number' },
+  { key: "equipo", label: "Nombre del equipo" },
+  { key: "pj", label: "Partidos jugados", type: "number" },
+  { key: "g", label: "Ganados", type: "number" },
+  { key: "e", label: "Empatados", type: "number" },
+  { key: "p", label: "Perdidos", type: "number" },
+  { key: "gf", label: "Goles a favor", type: "number" },
+  { key: "gc", label: "Goles en contra", type: "number" },
+  { key: "pts", label: "Puntos", type: "number" },
 ];
 
-const emptyEquipo = { equipo: '', pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, pts: 0 };
+const emptyEquipo = {
+  equipo: "",
+  pj: 0,
+  g: 0,
+  e: 0,
+  p: 0,
+  gf: 0,
+  gc: 0,
+  pts: 0,
+};
 
 export default function AdminClasificacion() {
   const { clasificacion, add, update, remove } = useClasificacion();
@@ -26,9 +35,15 @@ export default function AdminClasificacion() {
   const [confirm, setConfirm] = useState(null);
   const [generating, setGenerating] = useState(false);
 
-  const openAdd = () => { setEditing(null); setForm({ ...emptyEquipo }); };
-  const openEdit = (row) => { setEditing(row._id); setForm({ ...row }); };
-  const handleChange = (key, val) => setForm(f => ({ ...f, [key]: val }));
+  const openAdd = () => {
+    setEditing(null);
+    setForm({ ...emptyEquipo });
+  };
+  const openEdit = (row) => {
+    setEditing(row._id);
+    setForm({ ...row });
+  };
+  const handleChange = (key, val) => setForm((f) => ({ ...f, [key]: val }));
 
   const handleSubmit = async () => {
     if (editing) {
@@ -45,10 +60,10 @@ export default function AdminClasificacion() {
     setGenerating(true);
 
     // Rivales = todos los equipos que NO son Begur
-    const rivales = clasificacion.filter(c => !c.esNosotros);
+    const rivales = clasificacion.filter((c) => !c.esNosotros);
 
     // Partidos existentes generados automáticamente
-    const partidosAuto = partidos.filter(p => p.generado);
+    const partidosAuto = partidos.filter((p) => p.generado);
 
     // Borrar los partidos auto anteriores
     for (const p of partidosAuto) {
@@ -59,19 +74,19 @@ export default function AdminClasificacion() {
     for (const rival of rivales) {
       await addPartido({
         rival: rival.equipo,
-        fecha: '2025-01-01',
-        hora: '17:00',
-        lugar: 'Casa',
-        tipo: 'proximo',
+        fecha: "2025-01-01",
+        hora: "17:00",
+        lugar: "Casa",
+        tipo: "proximo",
         resultado: null,
         generado: true,
       });
       await addPartido({
         rival: rival.equipo,
-        fecha: '2025-01-01',
-        hora: '17:00',
-        lugar: 'Fuera',
-        tipo: 'proximo',
+        fecha: "2025-01-01",
+        hora: "17:00",
+        lugar: "Fuera",
+        tipo: "proximo",
         resultado: null,
         generado: true,
       });
@@ -90,15 +105,17 @@ export default function AdminClasificacion() {
       <div className="admin-page__header">
         <div>
           <h1 className="admin-page__title">Clasificación</h1>
-          <p className="admin-page__sub">{clasificacion.length} equipos · Ordenados por puntos</p>
+          <p className="admin-page__sub">
+            {clasificacion.length} equipos · Ordenados por puntos
+          </p>
         </div>
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           <button className="admin-btn admin-btn--edit" onClick={openAdd}>
             + Añadir equipo
           </button>
           <button
             className="admin-btn"
-            style={{ background: '#6c47ff', color: 'white' }}
+            style={{ background: "#6c47ff", color: "white" }}
             onClick={() => setConfirm(true)}
           >
             ⚽ Generar partidos
@@ -125,24 +142,41 @@ export default function AdminClasificacion() {
             </tr>
           </thead>
           <tbody>
-            {clasificacion.map(row => (
-              <tr key={row._id} className={row.esNosotros ? 'admin-clas-table__us' : ''}>
+            {clasificacion.map((row) => (
+              <tr
+                key={row._id}
+                className={row.esNosotros ? "admin-clas-table__us" : ""}
+              >
                 <td>{row.pos}</td>
-                <td>{row.equipo}{row.esNosotros ? ' ⚽' : ''}</td>
+                <td>
+                  {row.equipo}
+                  {row.esNosotros ? " ⚽" : ""}
+                </td>
                 <td>{row.pj}</td>
                 <td>{row.g}</td>
                 <td>{row.e}</td>
                 <td>{row.p}</td>
                 <td>{row.gf}</td>
                 <td>{row.gc}</td>
-                <td>{(row.gf - row.gc) > 0 ? '+' : ''}{row.gf - row.gc}</td>
-                <td><strong>{row.pts}</strong></td>
-                <td style={{ display: 'flex', gap: '6px' }}>
-                  <button className="admin-btn admin-btn--edit" onClick={() => openEdit(row)}>
+                <td>
+                  {row.gf - row.gc > 0 ? "+" : ""}
+                  {row.gf - row.gc}
+                </td>
+                <td>
+                  <strong>{row.pts}</strong>
+                </td>
+                <td style={{ display: "flex", gap: "6px" }}>
+                  <button
+                    className="admin-btn admin-btn--edit"
+                    onClick={() => openEdit(row)}
+                  >
                     Editar
                   </button>
                   {!row.esNosotros && (
-                    <button className="admin-btn admin-btn--delete" onClick={() => handleDelete(row._id)}>
+                    <button
+                      className="admin-btn admin-btn--delete"
+                      onClick={() => handleDelete(row._id)}
+                    >
                       Eliminar
                     </button>
                   )}
@@ -151,7 +185,14 @@ export default function AdminClasificacion() {
             ))}
             {clasificacion.length === 0 && (
               <tr>
-                <td colSpan={11} style={{ textAlign: 'center', color: 'var(--color-gray-text)', padding: '24px' }}>
+                <td
+                  colSpan={11}
+                  style={{
+                    textAlign: "center",
+                    color: "var(--color-gray-text)",
+                    padding: "24px",
+                  }}
+                >
                   Sin equipos. Añade el primero.
                 </td>
               </tr>
@@ -167,34 +208,44 @@ export default function AdminClasificacion() {
           values={form}
           onChange={handleChange}
           onSubmit={handleSubmit}
-          onCancel={() => { setForm(null); setEditing(null); }}
-          submitLabel={editing ? 'Guardar cambios' : 'Añadir equipo'}
+          onCancel={() => {
+            setForm(null);
+            setEditing(null);
+          }}
+          submitLabel={editing ? "Guardar cambios" : "Añadir equipo"}
         />
       )}
 
       {/* CONFIRM GENERAR PARTIDOS */}
       {confirm && (
-        <div className="admin-confirm-backdrop" onClick={() => setConfirm(null)}>
-          <div className="admin-confirm" onClick={e => e.stopPropagation()}>
+        <div
+          className="admin-confirm-backdrop"
+          onClick={() => setConfirm(null)}
+        >
+          <div className="admin-confirm" onClick={(e) => e.stopPropagation()}>
             <h3>⚽ Generar partidos automáticamente</h3>
             <p>
-              Se crearán <strong>{(clasificacion.filter(c => !c.esNosotros).length) * 2} partidos</strong> (casa + fuera contra cada rival).
-              Los partidos generados anteriormente se eliminarán.
+              Se crearán{" "}
+              <strong>
+                {clasificacion.filter((c) => !c.esNosotros).length * 2} partidos
+              </strong>{" "}
+              (casa + fuera contra cada rival). Los partidos generados
+              anteriormente se eliminarán.
             </p>
-            <p style={{ color: '#ff8080', fontSize: '0.82rem' }}>
+            <p style={{ color: "#ff8080", fontSize: "0.82rem" }}>
               ⚠️ Recuerda actualizar las fechas y horas de cada partido después.
             </p>
-            <div style={{ display: 'flex', gap: '10px', marginTop: '16px' }}>
+            <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
               <button
                 className="admin-btn admin-btn--edit"
                 onClick={generarPartidos}
                 disabled={generating}
               >
-                {generating ? 'Generando...' : 'Sí, generar partidos'}
+                {generating ? "Generando..." : "Sí, generar partidos"}
               </button>
               <button
                 className="admin-btn"
-                style={{ background: '#eee', color: '#333' }}
+                style={{ background: "#eee", color: "#333" }}
                 onClick={() => setConfirm(null)}
               >
                 Cancelar

@@ -233,7 +233,7 @@ export default function Home() {
 
               <div className="hero__btns">
                 <Link to="/plantilla" className="hero__btn hero__btn--red">
-                  Ver Plantilla →
+                  Veure Plantilla →
                 </Link>
                 <Link to="/temporada" className="hero__btn hero__btn--ghost">
                   Temporada
@@ -250,7 +250,7 @@ export default function Home() {
                   <div className="hero__pcard-top">
                     <span className="hero__pcard-badge">
                       <span className="hero__pcard-pulse" />
-                      Próximo partido
+                      Proxim partit
                     </span>
                     {proximo.lugar === "Casa" ? (
                       <span className="hero__pcard-venue hero__pcard-venue--home">
@@ -258,7 +258,7 @@ export default function Home() {
                       </span>
                     ) : (
                       <span className="hero__pcard-venue hero__pcard-venue--away">
-                        ✈️ Fuera
+                        ✈️ Visitant
                       </span>
                     )}
                   </div>
@@ -303,7 +303,7 @@ export default function Home() {
                   </div>
 
                   <Link to="/temporada" className="hero__pcard-link">
-                    Ver calendario completo →
+                    Veure calendari sencer →
                   </Link>
                 </div>
               ) : (
@@ -314,10 +314,10 @@ export default function Home() {
                     style={{ width: 72, opacity: 0.3 }}
                   />
                   <p>
-                    Sigue toda la actualidad del Begur C.F. A en cada jornada.
+                    Segueix tota l'actualitat del Begur C.F. A en cada jornada.
                   </p>
                   <Link to="/noticias" className="hero__pcard-link">
-                    Ver noticias →
+                    Veure noticies →
                   </Link>
                 </div>
               )}
@@ -327,7 +327,7 @@ export default function Home() {
           {/* TICKER DE NOTICIAS */}
           {!ln && ultimasNoticias.length > 0 && (
             <div className="hero__ticker-wrap">
-              <span className="hero__ticker-prefix">🔴 EN DIRECTO</span>
+              <span className="hero__ticker-prefix">🔴 EN DIRECTE</span>
               <NewsTicker
                 noticias={ultimasNoticias}
                 onSelect={setSelectedNews}
@@ -349,27 +349,27 @@ export default function Home() {
               {
                 to: "/liga",
                 num: `${nosotros.pos}º`,
-                label: "Clasificación",
+                label: "Clasificacio",
                 color: "white",
               },
               {
                 to: "/liga",
                 num: nosotros.pts,
-                label: "Puntos",
+                label: "Punts",
                 color: "white",
               },
               {
                 to: "/temporada",
                 num: v,
-                label: "Victorias",
+                label: "Victories",
                 color: "#4caf50",
               },
-              { to: "/temporada", num: e, label: "Empates", color: "#ffc107" },
-              { to: "/temporada", num: d, label: "Derrotas", color: "#C8102E" },
+              { to: "/temporada", num: e, label: "Empats", color: "#ffc107" },
+              { to: "/temporada", num: d, label: "Derrotes", color: "#C8102E" },
               {
                 to: "/plantilla",
                 num: jugadores.length,
-                label: "Jugadores",
+                label: "Jugadors",
                 color: "white",
               },
             ].map((s, i) => (
@@ -392,11 +392,11 @@ export default function Home() {
           <div className="container">
             <div className="hsec__head">
               <div>
-                <span className="hsec__eye">Resultados</span>
-                <h2 className="hsec__title">Últimos partidos</h2>
+                <span className="hsec__eye">Resultats</span>
+                <h2 className="hsec__title">Ultims partits</h2>
               </div>
               <Link to="/temporada" className="hsec__more">
-                Ver temporada →
+                Veure temporada →
               </Link>
             </div>
             <div className="rstrip">
@@ -432,11 +432,11 @@ export default function Home() {
             <div className="split__main">
               <div className="hsec__head">
                 <div>
-                  <span className="hsec__eye">Liga</span>
-                  <h2 className="hsec__title">Clasificación</h2>
+                  <span className="hsec__eye">Lliga</span>
+                  <h2 className="hsec__title">Clasificacio</h2>
                 </div>
                 <Link to="/liga" className="hsec__more">
-                  Ver completa →
+                  Veure completa →
                 </Link>
               </div>
               <div className="htable">
@@ -447,11 +447,11 @@ export default function Home() {
               <aside className="split__aside">
                 <div className="hsec__head">
                   <div>
-                    <span className="hsec__eye">Actualidad</span>
-                    <h2 className="hsec__title">Noticias</h2>
+                    <span className="hsec__eye">Actualitat</span>
+                    <h2 className="hsec__title">Noticies</h2>
                   </div>
                   <Link to="/noticias" className="hsec__more">
-                    Ver todas →
+                    Veure totes →
                   </Link>
                 </div>
                 <div className="anews">
@@ -494,11 +494,11 @@ export default function Home() {
           <div className="container">
             <div className="hsec__head">
               <div>
-                <span className="hsec__eye">El equipo</span>
+                <span className="hsec__eye">L'equip</span>
                 <h2 className="hsec__title">Plantilla</h2>
               </div>
               <Link to="/plantilla" className="hsec__more">
-                Ver completa →
+                Veure completa →
               </Link>
             </div>
             <div className="hplayers">
@@ -533,10 +533,10 @@ export default function Home() {
           </p>
           <div className="hcta__btns">
             <Link to="/temporada" className="hero__btn hero__btn--red">
-              Ver calendario
+              Veure calendari
             </Link>
             <Link to="/campo" className="hero__btn hero__btn--ghost">
-              Cómo llegar
+              Com arribar
             </Link>
           </div>
         </div>

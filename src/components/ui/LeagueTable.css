@@ -1,11 +1,13 @@
-.league-table { overflow-x: auto; }
+.league-table {
+  overflow-x: auto;
+}
 .league-table table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.86rem;
 }
 .league-table thead tr {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 }
 .league-table th {
   padding: 14px 16px;
@@ -14,31 +16,37 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.35);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
-.league-table th.league-table__equipo-col { text-align: left; }
+.league-table th.league-table__equipo-col {
+  text-align: left;
+}
 
 .league-table td {
   padding: 13px 16px;
   text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.75);
 }
-.league-table tbody tr:last-child td { border-bottom: none; }
+.league-table tbody tr:last-child td {
+  border-bottom: none;
+}
 .league-table tbody tr {
   transition: background 0.15s;
 }
-.league-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.league-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
 
 /* Fila del Begur */
 .league-table__us {
-  background: rgba(200,16,46,0.08) !important;
+  background: rgba(200, 16, 46, 0.08) !important;
 }
 .league-table__us td {
   color: white;
   font-weight: 600;
-  border-color: rgba(200,16,46,0.2);
+  border-color: rgba(200, 16, 46, 0.2);
 }
 
 .league-table__nombre {
@@ -51,7 +59,9 @@
   align-items: center;
   gap: 8px;
 }
-.league-table__escudo { font-size: 0.85rem; }
+.league-table__escudo {
+  font-size: 0.85rem;
+}
 
 /* Badges posición */
 .pos-badge {
@@ -63,11 +73,17 @@
   border-radius: 6px;
   font-size: 0.76rem;
   font-weight: 800;
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
 }
-.pos-badge--top { background: var(--color-blue); color: white; }
-.pos-badge--us { background: var(--color-red); color: white; }
+.pos-badge--top {
+  background: var(--color-blue);
+  color: white;
+}
+.pos-badge--us {
+  background: var(--color-red);
+  color: white;
+}
 
 .league-table__pts {
   font-family: var(--font-display);
@@ -78,6 +94,64 @@
 }
 
 @media (max-width: 480px) {
-  .league-table__hide-sm { display: none; }
-  .league-table td, .league-table th { padding: 10px 10px; }
+  .league-table__hide-sm {
+    display: none;
+  }
+  .league-table td,
+  .league-table th {
+    padding: 10px 10px;
+  }
+}
+
+/* ── FIX SCROLL LATERAL MÓVIL ── */
+.league-table {
+  width: 100%;
+  overflow-x: hidden; /* nunca scroll lateral */
+}
+
+.league-table table {
+  width: 100%;
+  table-layout: fixed; /* columnas se adaptan al ancho */
+}
+
+/* Columna equipo ocupa el espacio disponible */
+.league-table th.league-table__equipo-col,
+.league-table td.league-table__nombre {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 0; /* truco para que text-overflow funcione con table-layout: fixed */
+}
+
+@media (max-width: 600px) {
+  .league-table td,
+  .league-table th {
+    padding: 10px 6px;
+    font-size: 0.78rem;
+  }
+
+  .league-table th:nth-child(4), /* G */
+  .league-table td:nth-child(4),
+  .league-table th:nth-child(5), /* E */
+  .league-table td:nth-child(5) {
+    display: none;
+  }
+
+  .league-table__pts {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .league-table td,
+  .league-table th {
+    padding: 8px 4px;
+    font-size: 0.72rem;
+  }
+
+  .league-table th:nth-child(6), /* P */
+  .league-table td:nth-child(6) {
+    display: none;
+  }
 }
